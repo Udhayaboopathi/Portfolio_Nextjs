@@ -67,8 +67,11 @@ const projects = [
   },
 ];
 
+const INITIAL_PROJECT_COUNT = 3;
+
 export default function Projects({ content }) {
     const [selectedTag, setSelectedTag] = useState('All');
+    const [showAll, setShowAll] = useState(false);
 
     const tags = useMemo(() => {
         const allTags = new Set();
@@ -84,6 +87,10 @@ export default function Projects({ content }) {
         }
         return projects.filter(project => project.tags.includes(selectedTag));
     }, [selectedTag]);
+
+    const projectsToShow = useMemo(() => {
+        return showAll ? filteredProjects : filteredProjects.slice(0, INITIAL_PROJECT_COUNT);
+    }, [filteredProjects, showAll]);
 
     const cardVariants = {
         offscreen: {
@@ -109,9 +116,10 @@ export default function Projects({ content }) {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5 }}
+                className="text-center"
             >
-                <h2 className="text-3xl font-bold text-center mb-2 font-headline md:text-4xl">My Projects</h2>
-                <p className="text-muted-foreground text-center mb-8 max-w-2xl mx-auto">{content}</p>
+                <h2 className="text-3xl font-bold font-headline md:text-4xl">My Projects</h2>
+                <p className="text-muted-foreground mt-2 mb-8 max-w-2xl mx-auto">{content}</p>
             </motion.div>
 
             <motion.div
@@ -133,7 +141,7 @@ export default function Projects({ content }) {
             </motion.div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {filteredProjects.map((project, index) => (
+                {projectsToShow.map((project, index) => (
                     <motion.div
                         key={project.title}
                         custom={index}
@@ -143,36 +151,41 @@ export default function Projects({ content }) {
                         variants={cardVariants}
                         layout
                     >
-                        <Card className="group relative overflow-hidden rounded-lg shadow-lg h-full">
-                            <div className="absolute inset-0">
+                        <Card className="group relative overflow-hidden rounded-lg shadow-lg h-full flex flex-col">
+                            <div className="relative h-56">
                                 <Image src={project.image} alt={project.title} layout="fill" className="object-cover transition-transform duration-500 ease-in-out group-hover:scale-110" data-ai-hint={project.aiHint} />
-                                <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
                             </div>
-                            <div className="relative flex flex-col h-full p-6 justify-end">
-                                <CardTitle className="text-white mb-2">{project.title}</CardTitle>
+                            <div className="p-6 flex flex-col flex-grow">
+                                <CardTitle className="mb-2">{project.title}</CardTitle>
                                 <div className="flex flex-wrap gap-2 mb-4">
-                                    {project.tags.map(tag => <Badge key={tag} variant="secondary" className="bg-white/20 text-white border-none">{tag}</Badge>)}
+                                    {project.tags.map(tag => <Badge key={tag} variant="secondary">{tag}</Badge>)}
                                 </div>
-                                <div className="overflow-hidden h-0 group-hover:h-auto group-hover:mt-4 transition-all duration-500 ease-in-out">
-                                    <p className="text-white/80 mb-4 text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-200">{project.description}</p>
-                                    <div className="flex justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-300">
-                                        <Button variant="outline" size="icon" asChild className="bg-transparent text-white border-white hover:bg-white hover:text-black">
-                                            <Link href={project.github} target="_blank" rel="noopener noreferrer" aria-label={`GitHub for ${project.title}`}>
-                                                <Github />
-                                            </Link>
-                                        </Button>
-                                        <Button variant="default" asChild>
-                                            <Link href={project.live} target="_blank" rel="noopener noreferrer" aria-label={`Live demo of ${project.title}`}>
-                                                Live Project
-                                            </Link>
-                                        </Button>
-                                    </div>
+                                <p className="text-muted-foreground text-sm mb-4 flex-grow">{project.description}</p>
+                                <div className="flex justify-end gap-2 mt-auto">
+                                    <Button variant="outline" size="icon" asChild>
+                                        <Link href={project.github} target="_blank" rel="noopener noreferrer" aria-label={`GitHub for ${project.title}`}>
+                                            <Github />
+                                        </Link>
+                                    </Button>
+                                    <Button asChild>
+                                        <Link href={project.live} target="_blank" rel="noopener noreferrer" aria-label={`Live demo of ${project.title}`}>
+                                            <ExternalLink className="mr-2" /> Live Demo
+                                        </Link>
+                                    </Button>
                                 </div>
                             </div>
                         </Card>
                     </motion.div>
                 ))}
             </div>
+
+            {filteredProjects.length > INITIAL_PROJECT_COUNT && (
+                <div className="mt-12 text-center">
+                    <Button onClick={() => setShowAll(!showAll)}>
+                        {showAll ? 'Show Less' : 'Show More'}
+                    </Button>
+                </div>
+            )}
         </section>
     );
 }
