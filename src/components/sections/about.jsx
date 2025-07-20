@@ -51,7 +51,7 @@ export default function About({ content }) {
                         <Image
                             src="https://placehold.co/400x400.png"
                             data-ai-hint="profile picture"
-                            alt="John Doe"
+                            alt="Udhayaboopathi"
                             width={300}
                             height={300}
                             className="rounded-full object-cover border-4 border-primary shadow-lg aspect-square"

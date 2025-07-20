@@ -107,7 +107,7 @@ export default function Hero() {
         className="z-10 flex flex-col items-center gap-6 p-4"
       >
         <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold font-headline tracking-tight">
-          John Doe
+          Udhayaboopathi
         </h1>
         <TypeAnimation
           sequence={[

@@ -9,7 +9,7 @@ export default function Footer() {
       <div className="container mx-auto py-8 px-4 sm:px-6 lg:px-8 text-center text-muted-foreground">
         <div className="flex justify-center items-center gap-2 mb-4">
           <Code2 className="h-6 w-6 text-primary" />
-          <span className="text-lg font-bold font-headline text-foreground">John Doe</span>
+          <span className="text-lg font-bold font-headline text-foreground">Udhayaboopathi</span>
         </div>
         <div className="flex justify-center gap-4 mb-4">
           <Button variant="ghost" size="icon" asChild>
@@ -29,7 +29,7 @@ export default function Footer() {
           </Button>
         </div>
         <p className="text-sm">
-          &copy; {new Date().getFullYear()} John Doe. All rights reserved.
+          &copy; {new Date().getFullYear()} Udhayaboopathi. All rights reserved.
         </p>
       </div>
     </footer>
