@@ -65,6 +65,10 @@ export default function Navbar() {
     }
   };
   
+  if (!isMounted) {
+    return null;
+  }
+  
   return (
     <header
       className={cn(

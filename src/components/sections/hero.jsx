@@ -29,8 +29,9 @@ export default function Hero() {
     await loadSlim(engine);
   }, []);
 
-  const particlesLoaded = useCallback(async (container) => {
-  }, []);
+  if (!isMounted) {
+    return null;
+  }
 
   const particleOptions = {
     background: {
@@ -97,16 +98,13 @@ export default function Hero() {
 
   return (
     <section id="home" className="relative flex h-screen w-full items-center justify-center overflow-hidden p-4 text-center">
-      {isMounted && (
-        <div className="absolute inset-0 -z-10">
-          <Particles
-            id="tsparticles"
-            init={particlesInit}
-            loaded={particlesLoaded}
-            options={particleOptions}
-          />
-        </div>
-      )}
+      <div className="absolute inset-0 -z-10">
+        <Particles
+          id="tsparticles"
+          init={particlesInit}
+          options={particleOptions}
+        />
+      </div>
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -117,23 +115,21 @@ export default function Hero() {
           Udhayaboopathi
         </h1>
         <div className="h-6 text-base font-medium text-primary sm:text-lg md:text-xl">
-          {isMounted && (
-            <TypeAnimation
-              sequence={[
-                'I am a Passionate Developer',
-                1500,
-                'I build things for the web.',
-                1500,
-                'I love creating beautiful UIs.',
-                1500,
-                'I solve problems with code.',
-                1500
-              ]}
-              wrapper="p"
-              speed={50}
-              repeat={Infinity}
-            />
-          )}
+          <TypeAnimation
+            sequence={[
+              'I am a Passionate Developer',
+              1500,
+              'I build things for the web.',
+              1500,
+              'I love creating beautiful UIs.',
+              1500,
+              'I solve problems with code.',
+              1500
+            ]}
+            wrapper="p"
+            speed={50}
+            repeat={Infinity}
+          />
         </div>
         <motion.div
           initial={{ opacity: 0, y: 20 }}
