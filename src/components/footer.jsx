@@ -1,9 +1,19 @@
+
+"use client";
+
+import { useState, useEffect } from 'react';
 import { Github, Linkedin, Twitter } from 'lucide-react';
 import Link from 'next/link';
 import { Button } from './ui/button';
 import { Code2 } from 'lucide-react';
 
 export default function Footer() {
+  const [currentYear, setCurrentYear] = useState(null);
+
+  useEffect(() => {
+    setCurrentYear(new Date().getFullYear());
+  }, []);
+
   return (
     <footer className="bg-secondary">
       <div className="container mx-auto py-8 px-4 sm:px-6 lg:px-8 text-center text-muted-foreground">
@@ -29,7 +39,7 @@ export default function Footer() {
           </Button>
         </div>
         <p className="text-sm">
-          &copy; {new Date().getFullYear()} Udhayaboopathi. All rights reserved.
+          {currentYear ? `© ${currentYear} Udhayaboopathi. All rights reserved.` : '© Udhayaboopathi. All rights reserved.'}
         </p>
       </div>
     </footer>
