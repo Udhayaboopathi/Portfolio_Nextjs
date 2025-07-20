@@ -142,37 +142,33 @@ export default function Projects({ content }) {
                         viewport={{ once: true, amount: 0.2 }}
                         variants={cardVariants}
                         layout
-                        whileHover={{ scale: 1.03, y: -8 }}
-                        className="h-full"
                     >
-                        <Card className="h-full flex flex-col overflow-hidden transition-all duration-300 hover:shadow-primary/20 bg-card">
-                            <CardHeader className="p-0">
-                                <div className="aspect-video relative">
-                                    <Image src={project.image} alt={project.title} fill className="object-cover" data-ai-hint={project.aiHint} />
+                        <Card className="group relative overflow-hidden rounded-lg shadow-lg transition-transform duration-300 ease-in-out hover:scale-105">
+                            <div className="aspect-video relative">
+                                <Image src={project.image} alt={project.title} fill className="object-cover transition-transform duration-300 ease-in-out group-hover:scale-110" data-ai-hint={project.aiHint} />
+                                <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
+                            </div>
+                            <div className="absolute inset-0 flex flex-col justify-end p-6 bg-gradient-to-t from-black/80 to-transparent">
+                                <CardTitle className="text-white mb-2">{project.title}</CardTitle>
+                                <div className="flex flex-wrap gap-2 mb-4">
+                                    {project.tags.map(tag => <Badge key={tag} variant="secondary" className="bg-white/20 text-white border-none">{tag}</Badge>)}
                                 </div>
-                                <div className="p-6">
-                                    <CardTitle>{project.title}</CardTitle>
-                                    <div className="flex flex-wrap gap-2 mt-2">
-                                        {project.tags.map(tag => <Badge key={tag} variant="secondary">{tag}</Badge>)}
+                                <div className="transform translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-in-out">
+                                    <p className="text-white/80 mb-4 text-sm">{project.description}</p>
+                                    <div className="flex justify-end gap-2">
+                                        <Button variant="outline" size="icon" asChild className="bg-transparent text-white border-white hover:bg-white hover:text-black">
+                                            <Link href={project.github} target="_blank" rel="noopener noreferrer" aria-label={`GitHub for ${project.title}`}>
+                                                <Github />
+                                            </Link>
+                                        </Button>
+                                        <Button variant="default" asChild>
+                                            <Link href={project.live} target="_blank" rel="noopener noreferrer" aria-label={`Live demo of ${project.title}`}>
+                                                Live Project
+                                            </Link>
+                                        </Button>
                                     </div>
-                                    <CardDescription className="mt-4">{project.description}</CardDescription>
                                 </div>
-                            </CardHeader>
-                            <CardContent className="flex-grow p-6 pt-0">
-                               
-                            </CardContent>
-                            <CardFooter className="flex justify-end gap-2 p-6 pt-0">
-                                <Button variant="outline" size="icon" asChild>
-                                    <Link href={project.github} target="_blank" rel="noopener noreferrer" aria-label={`GitHub for ${project.title}`}>
-                                        <Github />
-                                    </Link>
-                                </Button>
-                                <Button variant="default" asChild>
-                                    <Link href={project.live} target="_blank" rel="noopener noreferrer" aria-label={`Live demo of ${project.title}`}>
-                                        Live Project
-                                    </Link>
-                                </Button>
-                            </CardFooter>
+                            </div>
                         </Card>
                     </motion.div>
                 ))}

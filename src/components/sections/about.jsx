@@ -38,7 +38,7 @@ export default function About({ content }) {
                 viewport={{ once: true }}
                 transition={{ duration: 0.5 }}
             >
-                <h2 className="text-3xl font-bold text-center mb-2 font-headline md:text-4xl">About Me</h2>
+                <h2 className="text-3xl font-bold text-center mb-2 mt-2 font-headline md:text-4xl">About Me</h2>
                 <p className="text-muted-foreground text-center mb-12 max-w-2xl mx-auto">My introduction</p>
                 <div className="grid md:grid-cols-3 gap-12 items-start">
                     <motion.div 
