@@ -1,3 +1,4 @@
+
 "use client";
 
 import { motion } from 'framer-motion';
@@ -7,6 +8,7 @@ import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Github, ExternalLink } from 'lucide-react';
 import Link from 'next/link';
+import { useState, useMemo } from 'react';
 
 const projects = [
   {
@@ -66,6 +68,23 @@ const projects = [
 ];
 
 export default function Projects({ content }) {
+    const [selectedTag, setSelectedTag] = useState('All');
+
+    const tags = useMemo(() => {
+        const allTags = new Set();
+        projects.forEach(project => {
+            project.tags.forEach(tag => allTags.add(tag));
+        });
+        return ['All', ...Array.from(allTags)];
+    }, []);
+
+    const filteredProjects = useMemo(() => {
+        if (selectedTag === 'All') {
+            return projects;
+        }
+        return projects.filter(project => project.tags.includes(selectedTag));
+    }, [selectedTag]);
+
     const cardVariants = {
         offscreen: {
             y: 50,
@@ -92,17 +111,37 @@ export default function Projects({ content }) {
                 transition={{ duration: 0.5 }}
             >
                 <h2 className="text-3xl font-bold text-center mb-2 font-headline md:text-4xl">My Projects</h2>
-                <p className="text-muted-foreground text-center mb-12 max-w-2xl mx-auto">{content}</p>
+                <p className="text-muted-foreground text-center mb-8 max-w-2xl mx-auto">{content}</p>
             </motion.div>
+
+            <motion.div
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.2 }}
+                className="flex justify-center flex-wrap gap-2 mb-12"
+            >
+                {tags.map(tag => (
+                    <Button
+                        key={tag}
+                        variant={selectedTag === tag ? 'default' : 'outline'}
+                        onClick={() => setSelectedTag(tag)}
+                    >
+                        {tag}
+                    </Button>
+                ))}
+            </motion.div>
+
             <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-8">
-                {projects.map((project, index) => (
+                {filteredProjects.map((project, index) => (
                     <motion.div
-                        key={index}
+                        key={project.title}
                         custom={index}
                         initial="offscreen"
                         whileInView="onscreen"
                         viewport={{ once: true, amount: 0.2 }}
                         variants={cardVariants}
+                        layout
                         whileHover={{ scale: 1.03, y: -8 }}
                         className="h-full"
                     >
