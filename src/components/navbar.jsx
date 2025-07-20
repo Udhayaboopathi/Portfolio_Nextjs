@@ -33,31 +33,34 @@ export default function Navbar() {
 
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
-      
-      const sections = navLinks.map(link => document.querySelector(link.href)).filter(Boolean);
-      const scrollPosition = window.scrollY + 150;
 
-      for (let i = sections.length - 1; i >= 0; i--) {
-        const section = sections[i];
+      const scrollPosition = window.scrollY + 160; // Adjusted for better accuracy
+      let currentSection = '#home';
+
+      navLinks.forEach(link => {
+        const section = document.querySelector(link.href);
         if (section && section.offsetTop <= scrollPosition) {
-          setActiveLink(navLinks[i].href);
-          break;
+          currentSection = link.href;
         }
-      }
+      });
+
+      setActiveLink(currentSection);
     };
 
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     handleScroll();
     return () => window.removeEventListener('scroll', handleScroll);
   }, [isMounted]);
-  
-  const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
+
+  const toggleMenu = () => {
+    setIsMenuOpen(prev => !prev);
+  };
 
   const handleMobileLinkClick = (href) => {
     setIsMenuOpen(false);
     const section = document.querySelector(href);
     if (section) {
-      section.scrollIntoView({ behavior: 'smooth' });
+        section.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
   };
 
@@ -65,11 +68,13 @@ export default function Navbar() {
     <header
       className={cn(
         "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
-        isScrolled || isMenuOpen ? "bg-background/80 backdrop-blur-sm shadow-md" : "bg-transparent"
+        isScrolled || isMenuOpen
+          ? "bg-background/80 backdrop-blur-sm shadow-md"
+          : "bg-transparent"
       )}
     >
       <div className="container mx-auto flex h-20 items-center justify-between px-4 sm:px-6 lg:px-8">
-        <Link href="#home" className="flex items-center gap-2" onClick={() => setIsMenuOpen(false)}>
+        <Link href="#home" className="flex items-center gap-2" onClick={() => handleMobileLinkClick('#home')}>
           <motion.div
             animate={{ rotate: [0, 15, -10, 5, 0] }}
             transition={{ duration: 1.5, repeat: Infinity, repeatDelay: 2 }}
@@ -93,18 +98,17 @@ export default function Navbar() {
               {activeLink === link.href && (
                 <motion.div
                   className="absolute -bottom-1 left-0 right-0 h-0.5 bg-primary"
-                  layoutId="active-link-underline"
+                  layoutId="active-link-underline-desktop"
                 />
               )}
             </a>
           ))}
         </nav>
-        
+
         <div className="flex items-center gap-2">
           <ThemeToggle />
-          <Button variant="ghost" size="icon" className="md:hidden" onClick={toggleMenu}>
+          <Button variant="ghost" size="icon" className="md:hidden" onClick={toggleMenu} aria-label="Toggle menu">
             {isMenuOpen ? <X /> : <Menu />}
-            <span className="sr-only">Toggle menu</span>
           </Button>
         </div>
       </div>
@@ -115,9 +119,9 @@ export default function Navbar() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-background/80 backdrop-blur-sm shadow-md overflow-hidden"
+            className="md:hidden overflow-hidden"
           >
-            <nav className="flex flex-col items-center gap-6 py-8">
+            <nav className="flex flex-col items-center gap-4 py-4">
               {navLinks.map((link) => (
                 <a
                   key={`mobile-${link.href}`}
@@ -127,7 +131,7 @@ export default function Navbar() {
                     handleMobileLinkClick(link.href);
                   }}
                   className={cn(
-                    "text-lg font-medium transition-colors hover:text-primary",
+                    "text-lg font-medium transition-colors hover:text-primary w-full text-center py-2",
                     activeLink === link.href ? "text-primary" : ""
                   )}
                 >
