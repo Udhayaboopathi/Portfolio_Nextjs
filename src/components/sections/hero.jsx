@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useCallback, useEffect, useState } from "react";
@@ -11,12 +12,12 @@ import { useTheme } from "next-themes";
 
 export default function Hero() {
   const { theme } = useTheme();
-  const [particleColor, setParticleColor] = useState("#fde047");
+  const [particleColor, setParticleColor] = useState(["#ffffff", "#fde047", "#8b5cf6"]);
 
   useEffect(() => {
     // This hook ensures the particle color is updated on the client-side
     // after the theme is resolved, avoiding hydration mismatches.
-    setParticleColor(theme === 'dark' ? "#fde047" : "#f59e0b");
+    setParticleColor(theme === 'dark' ? ["#ffffff", "#fde047", "#a78bfa"] : ["#4c1d95", "#f59e0b", "#8b5cf6"]);
   }, [theme]);
 
   const particlesInit = useCallback(async (engine) => {
@@ -75,16 +76,16 @@ export default function Hero() {
           enable: true,
           area: 800,
         },
-        value: 50,
+        value: 80,
       },
       opacity: {
-        value: 0.5,
+        value: {min: 0.3, max: 0.8},
       },
       shape: {
         type: "circle",
       },
       size: {
-        value: { min: 1, max: 4 },
+        value: { min: 1, max: 3 },
       },
     },
     detectRetina: true,
