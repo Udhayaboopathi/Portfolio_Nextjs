@@ -72,7 +72,7 @@ export default function Contact({ aboutSection, projectsSection, skillsSection }
 
   return (
     <>
-      <section id="contact" className="container mx-auto bg-secondary/50">
+      <section id="contact" className="container mx-auto bg-card">
         <motion.div
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -81,7 +81,7 @@ export default function Contact({ aboutSection, projectsSection, skillsSection }
             className="max-w-2xl mx-auto"
         >
           <h2 className="text-3xl font-bold text-center mb-2 font-headline md:text-4xl">Get In Touch</h2>
-          <p className="text-muted-foreground text-center mb-12">Have a question or want to work together? Drop me a line!</p>
+          <p className="text-muted-foreground text-center mb-12">I'm currently available for freelance work.</p>
           
           <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
@@ -90,7 +90,6 @@ export default function Contact({ aboutSection, projectsSection, skillsSection }
                 name="name"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Name</FormLabel>
                     <FormControl>
                       <Input placeholder="Your Name" {...field} />
                     </FormControl>
@@ -103,9 +102,8 @@ export default function Contact({ aboutSection, projectsSection, skillsSection }
                 name="email"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Email</FormLabel>
                     <FormControl>
-                      <Input type="email" placeholder="your.email@example.com" {...field} />
+                      <Input type="email" placeholder="Your Email" {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -116,9 +114,8 @@ export default function Contact({ aboutSection, projectsSection, skillsSection }
                 name="message"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Message</FormLabel>
                     <FormControl>
-                      <Textarea placeholder="Tell me about your project or inquiry..." rows={6} {...field} />
+                      <Textarea placeholder="Your Message" rows={6} {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>

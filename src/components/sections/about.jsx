@@ -7,31 +7,31 @@ import { motion } from 'framer-motion';
 
 const experience = [
     {
-        role: 'Senior Developer',
-        company: 'Tech Solutions Inc.',
-        period: '2020 - Present',
-        description: 'Leading front-end development for key projects, mentoring junior developers, and implementing best practices in an Agile environment.'
+        role: 'Software Engineer',
+        company: 'Google',
+        period: '2022 - Present',
+        description: 'Working on the Google Search team to improve the search experience for users.'
     },
     {
-        role: 'Mid-Level Developer',
-        company: 'Web Wizards LLC',
-        period: '2018 - 2020',
-        description: 'Developed and maintained web applications using React and Node.js. Collaborated with cross-functional teams to deliver high-quality software.'
+        role: 'Web Developer',
+        company: 'Apple',
+        period: '2020 - 2022',
+        description: 'Developed and maintained the Apple website, ensuring a seamless user experience.'
     }
 ];
 
 const education = [
     {
-        degree: 'M.S. in Computer Science',
-        institution: 'University of Technology',
-        period: '2016 - 2018',
-        description: 'Focused on advanced algorithms, distributed systems, and machine learning.'
+        degree: 'Master\'s Degree',
+        institution: 'Stanford University',
+        period: '2018 - 2020',
+        description: 'Studied computer science with a focus on artificial intelligence.'
     },
     {
-        degree: 'B.S. in Software Engineering',
-        institution: 'State College',
-        period: '2012 - 2016',
-        description: 'Graduated with honors. Active member of the coding club.'
+        degree: 'Bachelor\'s Degree',
+        institution: 'Harvard University',
+        period: '2014 - 2018',
+        description: 'Graduated with a degree in computer science and a minor in mathematics.'
     }
 ];
 
@@ -45,7 +45,7 @@ export default function About({ content }) {
                 transition={{ duration: 0.5 }}
             >
                 <h2 className="text-3xl font-bold text-center mb-2 font-headline md:text-4xl">About Me</h2>
-                <p className="text-muted-foreground text-center mb-12 max-w-2xl mx-auto">My journey, my experience, and what drives me.</p>
+                <p className="text-muted-foreground text-center mb-12 max-w-2xl mx-auto">My introduction</p>
                 <div className="grid md:grid-cols-3 gap-12 items-start">
                     <motion.div 
                       className="md:col-span-1 flex justify-center"
@@ -57,7 +57,7 @@ export default function About({ content }) {
                         <Image
                             src="https://placehold.co/400x400.png"
                             data-ai-hint="profile picture"
-                            alt="Alex Dev"
+                            alt="John Doe"
                             width={300}
                             height={300}
                             className="rounded-full object-cover border-4 border-primary shadow-lg aspect-square"
@@ -66,16 +66,13 @@ export default function About({ content }) {
                     <div className="md:col-span-2">
                         <Tabs defaultValue="overview" className="w-full">
                             <TabsList className="grid w-full grid-cols-3">
-                                <TabsTrigger value="overview"><User className="mr-2 h-4 w-4" />Overview</TabsTrigger>
+                                <TabsTrigger value="overview"><User className="mr-2 h-4 w-4" />About Me</TabsTrigger>
                                 <TabsTrigger value="experience"><Briefcase className="mr-2 h-4 w-4" />Experience</TabsTrigger>
                                 <TabsTrigger value="education"><GraduationCap className="mr-2 h-4 w-4" />Education</TabsTrigger>
                             </TabsList>
                             <TabsContent value="overview" className="mt-6">
                                 <Card>
-                                    <CardHeader>
-                                        <CardTitle>Who am I?</CardTitle>
-                                    </CardHeader>
-                                    <CardContent>
+                                    <CardContent className="pt-6">
                                         <p className="text-muted-foreground leading-relaxed">{content}</p>
                                     </CardContent>
                                 </Card>

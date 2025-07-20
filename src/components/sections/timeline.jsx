@@ -7,31 +7,31 @@ import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/com
 const timelineEvents = [
     {
         icon: <Building className="w-6 h-6" />,
-        date: "2020 - Present",
-        title: "Senior Developer",
-        subtitle: "Tech Solutions Inc.",
-        description: "Leading front-end development, mentoring, and architecting scalable solutions for enterprise clients."
+        date: "2022 - Present",
+        title: "Software Engineer",
+        subtitle: "Google",
+        description: "Working on the Google Search team to improve the search experience for users."
     },
     {
         icon: <Briefcase className="w-6 h-6" />,
-        date: "2018 - 2020",
-        title: "Mid-Level Developer",
-        subtitle: "Web Wizards LLC",
-        description: "Built and maintained responsive web apps for a variety of clients using React and Node.js."
-    },
-    {
-        icon: <Code className="w-6 h-6" />,
-        date: "2017",
-        title: "First Major Project",
-        subtitle: "Personal E-commerce Site",
-        description: "Developed a full-stack e-commerce application from scratch, solidifying my passion for web development."
+        date: "2020 - 2022",
+        title: "Web Developer",
+        subtitle: "Apple",
+        description: "Developed and maintained the Apple website, ensuring a seamless user experience."
     },
     {
         icon: <GraduationCap className="w-6 h-6" />,
-        date: "2016 - 2018",
-        title: "M.S. in Computer Science",
-        subtitle: "University of Technology",
-        description: "Specialized in distributed systems and machine learning, deepening my theoretical knowledge."
+        date: "2018 - 2020",
+        title: "Master's Degree",
+        subtitle: "Stanford University",
+        description: "Studied computer science with a focus on artificial intelligence."
+    },
+    {
+        icon: <GraduationCap className="w-6 h-6" />,
+        date: "2014 - 2018",
+        title: "Bachelor's Degree",
+        subtitle: "Harvard University",
+        description: "Graduated with a degree in computer science and a minor in mathematics."
     },
 ];
 
@@ -46,7 +46,7 @@ export default function Timeline() {
                 className="text-center"
             >
                 <h2 className="text-3xl font-bold mb-2 font-headline md:text-4xl">My Journey</h2>
-                <p className="text-muted-foreground mb-16 max-w-2xl mx-auto">A timeline of my career and key milestones.</p>
+                <p className="text-muted-foreground mb-16 max-w-2xl mx-auto">My career path and education.</p>
             </motion.div>
 
             <div className="relative max-w-3xl mx-auto">
@@ -70,7 +70,7 @@ export default function Timeline() {
                                     {event.icon}
                                 </div>
                             </div>
-                            <Card className={`w-full ${index % 2 === 0 ? 'text-left' : 'text-right'}`}>
+                            <Card className={`w-full bg-card ${index % 2 === 0 ? 'text-left' : 'text-right'}`}>
                                 <CardHeader>
                                     <p className="text-sm text-muted-foreground">{event.date}</p>
                                     <CardTitle>{event.title}</CardTitle>

@@ -32,16 +32,9 @@ const skillsData = {
   ]
 };
 
-const categories = ['All', ...Object.keys(skillsData)];
 const allSkills = Object.values(skillsData).flat();
 
 export default function Skills({ content }) {
-    const [selectedCategory, setSelectedCategory] = useState('All');
-
-    const filteredSkills = selectedCategory === 'All'
-        ? allSkills
-        : skillsData[selectedCategory] || [];
-
     const fadeInAnimationVariants = {
         initial: { opacity: 0, y: 20 },
         animate: (index) => ({
@@ -54,7 +47,7 @@ export default function Skills({ content }) {
     };
 
     return (
-        <section id="skills" className="container mx-auto bg-secondary/50">
+        <section id="skills" className="container mx-auto bg-card">
             <motion.div
                 initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -62,24 +55,11 @@ export default function Skills({ content }) {
                 transition={{ duration: 0.5 }}
             >
                 <h2 className="text-3xl font-bold text-center mb-2 font-headline md:text-4xl">My Skills</h2>
-                <p className="text-muted-foreground text-center mb-8 max-w-2xl mx-auto">{content}</p>
-
-                <div className="flex justify-center flex-wrap gap-2 mb-12">
-                    {categories.map((category) => (
-                        <Button
-                            key={category}
-                            variant={selectedCategory === category ? 'default' : 'outline'}
-                            onClick={() => setSelectedCategory(category)}
-                            className="transition-all"
-                        >
-                            {category}
-                        </Button>
-                    ))}
-                </div>
+                <p className="text-muted-foreground text-center mb-8 max-w-2xl mx-auto">My technical level</p>
 
                 <TooltipProvider>
-                    <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-6">
-                        {filteredSkills.map((skill, index) => (
+                    <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-4 gap-6 max-w-4xl mx-auto">
+                        {allSkills.map((skill, index) => (
                             <motion.div
                                 key={skill.name}
                                 variants={fadeInAnimationVariants}
@@ -90,7 +70,7 @@ export default function Skills({ content }) {
                             >
                                 <Tooltip>
                                     <TooltipTrigger asChild>
-                                        <div className="flex flex-col items-center gap-3 p-4 rounded-lg bg-background shadow-md hover:shadow-primary/20 hover:scale-105 transition-all cursor-pointer aspect-square justify-center">
+                                        <div className="flex flex-col items-center gap-3 p-4 rounded-lg bg-secondary shadow-md hover:shadow-primary/20 hover:scale-105 transition-all cursor-pointer aspect-square justify-center">
                                             {skill.icon}
                                             <span className="text-sm font-medium text-center">{skill.name}</span>
                                         </div>

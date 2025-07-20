@@ -62,7 +62,7 @@ export default function Navbar() {
           >
             <Code2 className="h-8 w-8 text-primary" />
           </motion.div>
-          <span className="text-xl font-bold font-headline">DevFolio</span>
+          <span className="text-xl font-bold font-headline">John Doe</span>
         </Link>
 
         <nav className="hidden md:flex items-center gap-6">

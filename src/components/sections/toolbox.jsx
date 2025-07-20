@@ -9,7 +9,7 @@ const tools = [
   { name: 'macOS', category: 'OS', icon: <Monitor className="w-10 h-10 text-primary" />, description: 'I use macOS for its Unix-based environment and smooth user experience.' },
   { name: 'iTerm2 + Zsh', category: 'Terminal', icon: <Terminal className="w-10 h-10 text-primary" />, description: 'A powerful terminal setup for a streamlined command-line workflow.' },
   { name: 'Git', category: 'Version Control', icon: <GitBranch className="w-10 h-10 text-primary" />, description: 'Essential for version control and collaborative development.' },
-  { name: 'Cobalt2 Theme', category: 'Theme', icon: <Palette className="w-10 h-10 text-primary" />, description: 'A beautiful and functional theme that I use across my development tools.' },
+  { name: 'Figma', category: 'Design', icon: <Palette className="w-10 h-10 text-primary" />, description: 'My favorite design tool for creating beautiful and functional user interfaces.' },
   { name: 'Fig', category: 'Productivity', icon: <Wind className="w-10 h-10 text-primary" />, description: 'Adds IDE-style autocomplete to my terminal.' },
 ];
 
@@ -26,7 +26,7 @@ export default function Toolbox() {
   };
 
   return (
-    <section id="toolbox" className="container mx-auto bg-secondary/50">
+    <section id="toolbox" className="container mx-auto bg-card">
         <motion.div
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -35,7 +35,7 @@ export default function Toolbox() {
             className="text-center"
         >
             <h2 className="text-3xl font-bold mb-2 font-headline md:text-4xl">My Toolbox</h2>
-            <p className="text-muted-foreground mb-12 max-w-2xl mx-auto">The tools and tech I use to bring my ideas to life.</p>
+            <p className="text-muted-foreground mb-12 max-w-2xl mx-auto">The tools and technologies I use to build my projects.</p>
         </motion.div>
         
         <TooltipProvider>
@@ -51,7 +51,7 @@ export default function Toolbox() {
                     >
                         <Tooltip>
                             <TooltipTrigger asChild>
-                                <div className="flex flex-col items-center text-center gap-3 p-4 rounded-lg bg-background shadow-md hover:shadow-primary/20 hover:scale-105 transition-all cursor-pointer aspect-square justify-center">
+                                <div className="flex flex-col items-center text-center gap-3 p-4 rounded-lg bg-secondary shadow-md hover:shadow-primary/20 hover:scale-105 transition-all cursor-pointer aspect-square justify-center">
                                     {tool.icon}
                                     <span className="text-sm font-medium">{tool.name}</span>
                                 </div>

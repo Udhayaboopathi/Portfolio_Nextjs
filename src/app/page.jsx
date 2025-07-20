@@ -10,9 +10,9 @@ import Contact from '@/components/sections/contact';
 import Footer from '@/components/footer';
 
 export default function Home() {
-  const aboutContent = `I am a passionate and creative full-stack developer with a knack for building beautiful, functional, and user-centric web applications. With a strong foundation in both front-end and back-end technologies, I enjoy turning complex problems into simple, elegant solutions. I'm always eager to learn new things and take on new challenges.`;
-  const projectsContent = `I love building things. Here are some of my projects, where I've explored different technologies and concepts.`;
-  const skillsContent = `I have experience with a variety of technologies and tools. Here are some of my key skills.`;
+  const aboutContent = `I am a web developer with a passion for creating beautiful and functional websites. I have a strong understanding of web technologies and a desire to learn new things.`;
+  const projectsContent = `I have worked on a variety of projects, from simple websites to complex web applications. Here are some of my favorite projects.`;
+  const skillsContent = `I have a strong understanding of web technologies and a desire to learn new things.`;
 
   return (
     <div className="flex min-h-screen flex-col">

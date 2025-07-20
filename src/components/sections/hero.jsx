@@ -11,12 +11,12 @@ import { useTheme } from "next-themes";
 
 export default function Hero() {
   const { theme } = useTheme();
-  const [particleColor, setParticleColor] = useState("#FAD20F");
+  const [particleColor, setParticleColor] = useState("#facc15");
 
   useEffect(() => {
     // This hook ensures the particle color is updated on the client-side
     // after the theme is resolved, avoiding hydration mismatches.
-    setParticleColor(theme === 'dark' ? "#FAD20F" : "#E64900");
+    setParticleColor(theme === 'dark' ? "#facc15" : "#facc15");
   }, [theme]);
 
   const particlesInit = useCallback(async (engine) => {
@@ -107,18 +107,17 @@ export default function Hero() {
         className="z-10 flex flex-col items-center gap-6 p-4"
       >
         <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold font-headline tracking-tight">
-          Alex Dev
+          John Doe
         </h1>
-        <p className="text-2xl md:text-3xl text-muted-foreground">Full-Stack Developer</p>
         <TypeAnimation
           sequence={[
+            'I am a Passionate Developer',
+            1500,
             'I build things for the web.',
             1500,
             'I love creating beautiful UIs.',
             1500,
             'I solve problems with code.',
-            1500,
-            'I am a lifelong learner.',
             1500
           ]}
           wrapper="p"
@@ -132,9 +131,8 @@ export default function Hero() {
           transition={{ duration: 1, delay: 0.5 }}
         >
           <Button size="lg" className="mt-8" asChild>
-            <a href="#about">
-              <ArrowDown className="mr-2 h-5 w-5 animate-bounce" />
-              See My Work
+            <a href="#projects">
+              View My Work
             </a>
           </Button>
         </motion.div>
