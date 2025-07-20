@@ -30,7 +30,11 @@ export default function Hero() {
   }, []);
 
   if (!isMounted) {
-    return null;
+    return (
+      <section id="home" className="relative flex h-screen w-full items-center justify-center overflow-hidden p-4 text-center">
+        {/* Render a static background or nothing on the server to prevent hydration issues */}
+      </section>
+    );
   }
 
   const particleOptions = {
@@ -115,21 +119,23 @@ export default function Hero() {
           Udhayaboopathi
         </h1>
         <div className="h-6 text-base font-medium text-primary sm:text-lg md:text-xl">
-          <TypeAnimation
-            sequence={[
-              'I am a Passionate Developer',
-              1500,
-              'I build things for the web.',
-              1500,
-              'I love creating beautiful UIs.',
-              1500,
-              'I solve problems with code.',
-              1500
-            ]}
-            wrapper="p"
-            speed={50}
-            repeat={Infinity}
-          />
+          {isMounted && (
+            <TypeAnimation
+              sequence={[
+                'I am a Passionate Developer',
+                1500,
+                'I build things for the web.',
+                1500,
+                'I love creating beautiful UIs.',
+                1500,
+                'I solve problems with code.',
+                1500
+              ]}
+              wrapper="p"
+              speed={50}
+              repeat={Infinity}
+            />
+          )}
         </div>
         <motion.div
           initial={{ opacity: 0, y: 20 }}

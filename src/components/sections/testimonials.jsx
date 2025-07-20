@@ -1,3 +1,4 @@
+
 "use client";
 
 import Image from 'next/image';
@@ -48,7 +49,7 @@ export default function Testimonials() {
               <Card className="h-full bg-card">
                 <CardContent className="flex flex-col items-center text-center p-8 gap-6">
                   <Avatar className="w-24 h-24 border-4 border-primary">
-                    <AvatarImage src={testimonial.avatar} alt={testimonial.name} data-ai-hint="person face" />
+                    <AvatarImage src={testimonial.avatar} alt={testimonial.name} data-ai-hint="person face" sizes="96px" />
                     <AvatarFallback>{testimonial.initials}</AvatarFallback>
                   </Avatar>
                   <blockquote className="text-lg italic text-foreground max-w-2xl">

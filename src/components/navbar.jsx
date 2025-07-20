@@ -35,6 +35,7 @@ export default function Navbar() {
       setIsScrolled(window.scrollY > 20);
       const scrollPosition = window.scrollY + 160;
       let currentSection = '#home';
+
       navLinks.forEach(link => {
         const section = document.querySelector(link.href);
         if (section && section.offsetTop <= scrollPosition) {
@@ -45,10 +46,9 @@ export default function Navbar() {
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
-    handleScroll();
+    handleScroll(); // Initial check
     return () => window.removeEventListener('scroll', handleScroll);
   }, [isMounted]);
-
 
   const toggleMenu = () => {
     setIsMenuOpen(prev => !prev);
@@ -58,7 +58,7 @@ export default function Navbar() {
     setIsMenuOpen(false);
     const section = document.querySelector(href);
     if (section) {
-        // Use a slight delay to ensure the menu is closing before scrolling
+        // Use a slight delay to ensure the menu has started closing before scrolling
         setTimeout(() => {
             section.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }, 100);
