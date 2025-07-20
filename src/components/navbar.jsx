@@ -34,20 +34,12 @@ export default function Navbar() {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
       
-      const sections = navLinks.map(link => {
-        try {
-          return document.querySelector(link.href);
-        } catch (e) {
-          console.warn(`Could not find element for selector: ${link.href}`);
-          return null;
-        }
-      }).filter(Boolean);
-
+      const sections = navLinks.map(link => document.querySelector(link.href)).filter(Boolean);
       const scrollPosition = window.scrollY + 150;
 
       for (let i = sections.length - 1; i >= 0; i--) {
         const section = sections[i];
-        if (section && (section).offsetTop <= scrollPosition) {
+        if (section.offsetTop <= scrollPosition) {
           setActiveLink(navLinks[i].href);
           break;
         }
@@ -61,8 +53,7 @@ export default function Navbar() {
   
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
-  const handleMobileLinkClick = (e, href) => {
-    e.preventDefault();
+  const handleMobileLinkClick = (href) => {
     setIsMenuOpen(false);
     const section = document.querySelector(href);
     if (section) {
@@ -120,34 +111,36 @@ export default function Navbar() {
               <span className="sr-only">Toggle menu</span>
             </Button>
           </div>
-          
-          <AnimatePresence>
-            {isMenuOpen && (
-              <motion.div
-                initial={{ opacity: 0, height: 0 }}
-                animate={{ opacity: 1, height: 'auto' }}
-                exit={{ opacity: 0, height: 0 }}
-                className="absolute md:hidden top-20 left-0 right-0 z-40 bg-background/80 backdrop-blur-sm shadow-md overflow-hidden"
-              >
-                <nav className="flex flex-col items-center gap-6 py-8">
-                  {navLinks.map((link) => (
-                    <a
-                      key={`mobile-${link.href}`}
-                      href={link.href}
-                      onClick={(e) => handleMobileLinkClick(e, link.href)}
-                      className={cn(
-                        "text-lg font-medium transition-colors hover:text-primary",
-                        activeLink === link.href ? "text-primary" : ""
-                      )}
-                    >
-                      {link.name}
-                    </a>
-                  ))}
-                </nav>
-              </motion.div>
-            )}
-          </AnimatePresence>
         </div>
+        <AnimatePresence>
+          {isMenuOpen && (
+            <motion.div
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: 'auto' }}
+              exit={{ opacity: 0, height: 0 }}
+              className="absolute md:hidden top-20 left-0 right-0 z-40 bg-background/80 backdrop-blur-sm shadow-md overflow-hidden"
+            >
+              <nav className="flex flex-col items-center gap-6 py-8">
+                {navLinks.map((link) => (
+                  <a
+                    key={`mobile-${link.href}`}
+                    href={link.href}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      handleMobileLinkClick(link.href);
+                    }}
+                    className={cn(
+                      "text-lg font-medium transition-colors hover:text-primary",
+                      activeLink === link.href ? "text-primary" : ""
+                    )}
+                  >
+                    {link.name}
+                  </a>
+                ))}
+              </nav>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </motion.header>
     </>
   );
