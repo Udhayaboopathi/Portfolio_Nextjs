@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from 'framer-motion';
-import { Briefcase, Building, Code, GraduationCap } from 'lucide-react';
+import { Briefcase, Building, GraduationCap } from 'lucide-react';
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card';
 
 const timelineEvents = [
@@ -43,7 +43,7 @@ export default function Timeline() {
             </motion.div>
 
             <div className="relative max-w-3xl mx-auto">
-                <div className="absolute left-1/2 -translate-x-1/2 top-0 h-full w-0.5 bg-border/70"></div>
+                <div className="absolute left-9 h-full w-0.5 bg-border/70 md:left-1/2 md:-translate-x-1/2"></div>
                 {timelineEvents.map((event, index) => (
                     <motion.div
                         key={index}
@@ -51,48 +51,43 @@ export default function Timeline() {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.5, delay: index * 0.2 }}
-                        className="mb-8 relative flex items-center w-full"
+                        className="mb-8 relative flex items-start w-full"
                     >
-                         <div className="absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 z-10">
+                         <div className="absolute top-0 left-9 -translate-x-1/2 z-10 md:left-1/2">
                             <div className="w-12 h-12 bg-primary rounded-full flex items-center justify-center text-primary-foreground shadow-lg ring-8 ring-background">
                                 {event.icon}
                             </div>
                         </div>
 
-                        {index % 2 === 0 ? (
-                             <div className="w-1/2 pr-8 text-right">
-                                {/* This div is for spacing on the opposite side of the card */}
-                            </div>
-                        ) : (
-                            <Card className="w-1/2 bg-card text-left">
-                                <CardHeader>
-                                    <p className="text-sm text-muted-foreground">{event.date}</p>
-                                    <CardTitle>{event.title}</CardTitle>
-                                    <CardDescription>{event.subtitle}</CardDescription>
-                                </CardHeader>
-                                <CardContent>
-                                    <p className="text-sm text-muted-foreground">{event.description}</p>
-                                </CardContent>
-                            </Card>
-                        )}
+                        <div className="w-full md:w-1/2 md:pr-16 pl-24 md:pl-0">
+                           {index % 2 !== 0 && (
+                                <Card className="bg-card text-left">
+                                    <CardHeader>
+                                        <p className="text-sm text-muted-foreground">{event.date}</p>
+                                        <CardTitle>{event.title}</CardTitle>
+                                        <CardDescription>{event.subtitle}</CardDescription>
+                                    </CardHeader>
+                                    <CardContent>
+                                        <p className="text-sm text-muted-foreground">{event.description}</p>
+                                    </CardContent>
+                                </Card>
+                           )}
+                        </div>
                        
-                       {index % 2 === 0 ? (
-                            <Card className="w-1/2 ml-auto bg-card text-left">
-                                <CardHeader>
-                                    <p className="text-sm text-muted-foreground">{event.date}</p>
-                                    <CardTitle>{event.title}</CardTitle>
-                                    <CardDescription>{event.subtitle}</CardDescription>
-                                </CardHeader>
-                                <CardContent>
-                                    <p className="text-sm text-muted-foreground">{event.description}</p>
-                                </CardContent>
-                            </Card>
-                       ) : (
-                             <div className="w-1/2 pl-8 text-left">
-                                {/* This div is for spacing on the opposite side of the card */}
-                            </div>
-                       )}
-
+                       <div className="w-full md:w-1/2 md:pl-16 pl-24">
+                           {index % 2 === 0 && (
+                                <Card className="bg-card text-left">
+                                    <CardHeader>
+                                        <p className="text-sm text-muted-foreground">{event.date}</p>
+                                        <CardTitle>{event.title}</CardTitle>
+                                        <CardDescription>{event.subtitle}</CardDescription>
+                                    </CardHeader>
+                                    <CardContent>
+                                        <p className="text-sm text-muted-foreground">{event.description}</p>
+                                    </CardContent>
+                                </Card>
+                           )}
+                       </div>
                     </motion.div>
                 ))}
             </div>

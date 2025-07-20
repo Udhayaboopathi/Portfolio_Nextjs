@@ -10,14 +10,14 @@ const testimonials = [
   {
     name: 'Jane Smith',
     role: 'Project Manager, Tech Solutions Inc.',
-    quote: "John is a phenomenal developer. Their attention to detail and ability to tackle complex problems is second to none. A true asset to any team.",
+    quote: "Udhayaboopathi is a phenomenal developer. Their attention to detail and ability to tackle complex problems is second to none. A true asset to any team.",
     avatar: 'https://placehold.co/100x100.png',
     initials: 'JS'
   },
   {
     name: 'Mark Johnson',
     role: 'Lead Designer, Creative Co.',
-    quote: "Working with John was a breeze. They have a great eye for design and were able to translate our mockups into a pixel-perfect, responsive reality.",
+    quote: "Working with Udhayaboopathi was a breeze. They have a great eye for design and were able to translate our mockups into a pixel-perfect, responsive reality.",
     avatar: 'https://placehold.co/100x100.png',
     initials: 'MJ'
   }
@@ -51,10 +51,10 @@ export default function Testimonials() {
                     <AvatarImage src={testimonial.avatar} alt={testimonial.name} data-ai-hint="person face" />
                     <AvatarFallback>{testimonial.initials}</AvatarFallback>
                   </Avatar>
-                  <blockquote className="text-muted-foreground italic text-lg border-l-0 pl-0">
+                  <blockquote className="text-lg italic text-foreground max-w-2xl">
                     "{testimonial.quote}"
                   </blockquote>
-                  <div className="mt-auto">
+                  <div className="mt-4">
                     <p className="font-semibold text-lg">{testimonial.name}</p>
                     <p className="text-sm text-muted-foreground">{testimonial.role}</p>
                   </div>

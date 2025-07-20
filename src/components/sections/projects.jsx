@@ -143,19 +143,19 @@ export default function Projects({ content }) {
                         variants={cardVariants}
                         layout
                     >
-                        <Card className="group relative overflow-hidden rounded-lg shadow-lg transition-transform duration-300 ease-in-out hover:scale-105">
-                            <div className="aspect-video relative">
-                                <Image src={project.image} alt={project.title} fill className="object-cover transition-transform duration-300 ease-in-out group-hover:scale-110" data-ai-hint={project.aiHint} />
-                                <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
+                        <Card className="group relative overflow-hidden rounded-lg shadow-lg h-full">
+                            <div className="absolute inset-0">
+                                <Image src={project.image} alt={project.title} layout="fill" className="object-cover transition-transform duration-500 ease-in-out group-hover:scale-110" data-ai-hint={project.aiHint} />
+                                <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
                             </div>
-                            <div className="absolute inset-0 flex flex-col justify-end p-6 bg-gradient-to-t from-black/80 to-transparent">
+                            <div className="relative flex flex-col h-full p-6 justify-end">
                                 <CardTitle className="text-white mb-2">{project.title}</CardTitle>
                                 <div className="flex flex-wrap gap-2 mb-4">
                                     {project.tags.map(tag => <Badge key={tag} variant="secondary" className="bg-white/20 text-white border-none">{tag}</Badge>)}
                                 </div>
-                                <div className="transform translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-in-out">
-                                    <p className="text-white/80 mb-4 text-sm">{project.description}</p>
-                                    <div className="flex justify-end gap-2">
+                                <div className="overflow-hidden h-0 group-hover:h-auto group-hover:mt-4 transition-all duration-500 ease-in-out">
+                                    <p className="text-white/80 mb-4 text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-200">{project.description}</p>
+                                    <div className="flex justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-300">
                                         <Button variant="outline" size="icon" asChild className="bg-transparent text-white border-white hover:bg-white hover:text-black">
                                             <Link href={project.github} target="_blank" rel="noopener noreferrer" aria-label={`GitHub for ${project.title}`}>
                                                 <Github />

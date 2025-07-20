@@ -26,45 +26,47 @@ export default function Toolbox() {
   };
 
   return (
-    <section id="toolbox" className="container mx-auto bg-card">
-        <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="text-center"
-        >
-            <h2 className="text-3xl font-bold mb-2 font-headline md:text-4xl">My Toolbox</h2>
-            <p className="text-muted-foreground mb-12 max-w-2xl mx-auto">The tools and technologies I use to build my projects.</p>
-        </motion.div>
-        
-        <TooltipProvider>
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 max-w-5xl mx-auto">
-                {tools.map((tool, index) => (
-                    <motion.div
-                        key={tool.name}
-                        variants={fadeInAnimationVariants}
-                        initial="initial"
-                        whileInView="animate"
-                        viewport={{ once: true }}
-                        custom={index}
-                    >
-                        <Tooltip>
-                            <TooltipTrigger asChild>
-                                <div className="flex flex-col items-center text-center gap-3 p-4 rounded-lg bg-secondary shadow-md hover:shadow-primary/20 hover:scale-105 transition-all cursor-pointer aspect-square justify-center">
-                                    {tool.icon}
-                                    <span className="text-sm font-medium">{tool.name}</span>
-                                </div>
-                            </TooltipTrigger>
-                            <TooltipContent>
-                                <p className="font-semibold">{tool.name}</p>
-                                <p className="text-sm text-muted-foreground">{tool.description}</p>
-                            </TooltipContent>
-                        </Tooltip>
-                    </motion.div>
-                ))}
-            </div>
-        </TooltipProvider>
+    <section id="toolbox" className="container mx-auto">
+        <div className="bg-card p-8 md:p-12 rounded-lg">
+            <motion.div
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5 }}
+                className="text-center"
+            >
+                <h2 className="text-3xl font-bold mb-2 font-headline md:text-4xl">My Toolbox</h2>
+                <p className="text-muted-foreground mb-12 max-w-2xl mx-auto">The tools and technologies I use to build my projects.</p>
+            </motion.div>
+            
+            <TooltipProvider>
+                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 max-w-5xl mx-auto">
+                    {tools.map((tool, index) => (
+                        <motion.div
+                            key={tool.name}
+                            variants={fadeInAnimationVariants}
+                            initial="initial"
+                            whileInView="animate"
+                            viewport={{ once: true }}
+                            custom={index}
+                        >
+                            <Tooltip>
+                                <TooltipTrigger asChild>
+                                    <div className="flex flex-col items-center text-center gap-3 p-4 rounded-lg bg-secondary shadow-md hover:shadow-primary/20 hover:scale-105 transition-all cursor-pointer aspect-square justify-center">
+                                        {tool.icon}
+                                        <span className="text-sm font-medium">{tool.name}</span>
+                                    </div>
+                                </TooltipTrigger>
+                                <TooltipContent>
+                                    <p className="font-semibold">{tool.name}</p>
+                                    <p className="text-sm text-muted-foreground">{tool.description}</p>
+                                </TooltipContent>
+                            </Tooltip>
+                        </motion.div>
+                    ))}
+                </div>
+            </TooltipProvider>
+        </div>
     </section>
   );
 }

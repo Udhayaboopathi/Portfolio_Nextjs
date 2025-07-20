@@ -72,84 +72,84 @@ export default function Contact({ aboutSection, projectsSection, skillsSection }
 
   return (
     <>
-      <section id="contact" className="container mx-auto bg-card">
-        <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="max-w-2xl mx-auto"
-        >
-          <h2 className="text-3xl font-bold text-center mb-2 font-headline md:text-4xl">Get In Touch</h2>
-          <p className="text-muted-foreground text-center mb-12">I'm currently available for freelance work.</p>
-          
-          <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
-              <FormField
-                control={form.control}
-                name="name"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormControl>
-                      <Input placeholder="Your Name" {...field} />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-              <FormField
-                control={form.control}
-                name="email"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormControl>
-                      <Input type="email" placeholder="Your Email" {...field} />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-              <FormField
-                control={form.control}
-                name="message"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormControl>
-                      <Textarea placeholder="Your Message" rows={6} {...field} />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-              <FormField
-                control={form.control}
-                name="getSuggestion"
-                render={({ field }) => (
-                  <FormItem className="flex flex-row items-center justify-between rounded-lg border p-4 bg-background">
-                    <div className="space-y-0.5">
-                      <FormLabel className="text-base">
-                        AI Follow-up Suggestion
-                      </FormLabel>
-                      <p className="text-sm text-muted-foreground">
-                        Get an AI-powered suggestion for your follow-up email.
-                      </p>
-                    </div>
-                    <FormControl>
-                      <Switch
-                        checked={field.value}
-                        onCheckedChange={field.onChange}
-                        aria-label="Toggle AI follow-up suggestion"
-                      />
-                    </FormControl>
-                  </FormItem>
-                )}
-              />
-              <Button type="submit" disabled={isLoading} className="w-full">
-                {isLoading ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : 'Send Message'}
-              </Button>
-            </form>
-          </Form>
-        </motion.div>
+      <section id="contact" className="container mx-auto">
+          <motion.div
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
+              className="max-w-2xl mx-auto bg-card p-8 md:p-12 rounded-lg"
+          >
+            <h2 className="text-3xl font-bold text-center mb-2 font-headline md:text-4xl">Get In Touch</h2>
+            <p className="text-muted-foreground text-center mb-12">I'm currently available for freelance work.</p>
+            
+            <Form {...form}>
+              <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+                <FormField
+                  control={form.control}
+                  name="name"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormControl>
+                        <Input placeholder="Your Name" {...field} />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <FormField
+                  control={form.control}
+                  name="email"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormControl>
+                        <Input type="email" placeholder="Your Email" {...field} />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <FormField
+                  control={form.control}
+                  name="message"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormControl>
+                        <Textarea placeholder="Your Message" rows={6} {...field} />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <FormField
+                  control={form.control}
+                  name="getSuggestion"
+                  render={({ field }) => (
+                    <FormItem className="flex flex-row items-center justify-between rounded-lg border p-4 bg-background">
+                      <div className="space-y-0.5">
+                        <FormLabel className="text-base">
+                          AI Follow-up Suggestion
+                        </FormLabel>
+                        <p className="text-sm text-muted-foreground">
+                          Get an AI-powered suggestion for your follow-up email.
+                        </p>
+                      </div>
+                      <FormControl>
+                        <Switch
+                          checked={field.value}
+                          onCheckedChange={field.onChange}
+                          aria-label="Toggle AI follow-up suggestion"
+                        />
+                      </FormControl>
+                    </FormItem>
+                  )}
+                />
+                <Button type="submit" disabled={isLoading} className="w-full">
+                  {isLoading ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : 'Send Message'}
+                </Button>
+              </form>
+            </Form>
+          </motion.div>
       </section>
 
       <AlertDialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
