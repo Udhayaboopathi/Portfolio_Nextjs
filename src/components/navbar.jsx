@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, useEffect } from 'react';
@@ -26,7 +27,15 @@ export default function Navbar() {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
       
-      const sections = navLinks.map(link => document.querySelector(link.href));
+      const sections = navLinks.map(link => {
+        const selector = link.href.startsWith('#') ? link.href : `[id='${link.href.substring(1)}']`;
+        try {
+          return document.querySelector(selector);
+        } catch (e) {
+          console.warn(`Could not find element for selector: ${selector}`);
+          return null;
+        }
+      });
       const scrollPosition = window.scrollY + 150;
 
       for (let i = sections.length - 1; i >= 0; i--) {
@@ -39,6 +48,7 @@ export default function Navbar() {
     };
 
     window.addEventListener('scroll', handleScroll);
+    handleScroll(); // Initial check
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
   
@@ -48,7 +58,7 @@ export default function Navbar() {
     <motion.header
       className={cn(
         "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
-        isScrolled ? "bg-background/80 backdrop-blur-sm shadow-md" : "bg-transparent"
+        isScrolled || isMenuOpen ? "bg-background/80 backdrop-blur-sm shadow-md" : "bg-transparent"
       )}
       initial={{ y: -100 }}
       animate={{ y: 0 }}
@@ -100,7 +110,7 @@ export default function Navbar() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-background/90 backdrop-blur-sm"
+            className="md:hidden overflow-hidden"
           >
             <nav className="flex flex-col items-center gap-6 py-8">
               {navLinks.map((link) => (
