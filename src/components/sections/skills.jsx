@@ -87,7 +87,6 @@ export default function Skills({ content }) {
                                 whileInView="animate"
                                 viewport={{ once: true }}
                                 custom={index}
-                                layout
                             >
                                 <Tooltip>
                                     <TooltipTrigger asChild>
