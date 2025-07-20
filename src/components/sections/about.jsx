@@ -8,30 +8,24 @@ import { motion } from 'framer-motion';
 const experience = [
     {
         role: 'Software Engineer',
-        company: 'Google',
-        period: '2022 - Present',
-        description: 'Working on the Google Search team to improve the search experience for users.'
+        company: 'Innovate Tech',
+        period: '2021 - Present',
+        description: 'Developing and maintaining web applications using modern technologies.'
     },
     {
-        role: 'Web Developer',
-        company: 'Apple',
-        period: '2020 - 2022',
-        description: 'Developed and maintained the Apple website, ensuring a seamless user experience.'
+        role: 'Jr. Web Developer',
+        company: 'Digital Solutions',
+        period: '2019 - 2021',
+        description: 'Assisted in the development of websites and web applications for various clients.'
     }
 ];
 
 const education = [
     {
-        degree: 'Master\'s Degree',
-        institution: 'Stanford University',
-        period: '2018 - 2020',
-        description: 'Studied computer science with a focus on artificial intelligence.'
-    },
-    {
-        degree: 'Bachelor\'s Degree',
-        institution: 'Harvard University',
-        period: '2014 - 2018',
-        description: 'Graduated with a degree in computer science and a minor in mathematics.'
+        degree: 'Bachelor of Science in Computer Science',
+        institution: 'University of Technology',
+        period: '2015 - 2019',
+        description: 'Focused on web development and software engineering.'
     }
 ];
 

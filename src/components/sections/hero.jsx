@@ -11,12 +11,12 @@ import { useTheme } from "next-themes";
 
 export default function Hero() {
   const { theme } = useTheme();
-  const [particleColor, setParticleColor] = useState("#facc15");
+  const [particleColor, setParticleColor] = useState("#fde047");
 
   useEffect(() => {
     // This hook ensures the particle color is updated on the client-side
     // after the theme is resolved, avoiding hydration mismatches.
-    setParticleColor(theme === 'dark' ? "#facc15" : "#facc15");
+    setParticleColor(theme === 'dark' ? "#fde047" : "#f59e0b");
   }, [theme]);
 
   const particlesInit = useCallback(async (engine) => {
@@ -137,6 +137,16 @@ export default function Hero() {
           </Button>
         </motion.div>
       </motion.div>
+       <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1, delay: 1.5 }}
+          className="absolute bottom-10 left-1/2 -translate-x-1/2"
+        >
+          <a href="#about" aria-label="Scroll down">
+            <ArrowDown className="w-8 h-8 text-foreground/50 animate-bounce" />
+          </a>
+        </motion.div>
     </section>
   );
 }
