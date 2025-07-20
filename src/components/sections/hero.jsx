@@ -17,8 +17,13 @@ export default function Hero() {
 
   useEffect(() => {
     setIsMounted(true);
-    setParticleColor(theme === 'dark' ? ["#ffffff", "#facc15"] : ["#000000", "#facc15"]);
-  }, [theme]);
+  }, []);
+
+  useEffect(() => {
+    if (isMounted) {
+      setParticleColor(theme === 'dark' ? ["#ffffff", "#facc15"] : ["#000000", "#facc15"]);
+    }
+  }, [theme, isMounted]);
 
   const particlesInit = useCallback(async (engine) => {
     await loadSlim(engine);
@@ -91,25 +96,27 @@ export default function Hero() {
   };
 
   return (
-    <section id="home" className="relative h-screen w-full flex items-center justify-center text-center overflow-hidden p-4">
-      <div className="absolute inset-0 -z-10">
-        <Particles
-          id="tsparticles"
-          init={particlesInit}
-          loaded={particlesLoaded}
-          options={particleOptions}
-        />
-      </div>
+    <section id="home" className="relative flex h-screen w-full items-center justify-center overflow-hidden p-4 text-center">
+      {isMounted && (
+        <div className="absolute inset-0 -z-10">
+          <Particles
+            id="tsparticles"
+            init={particlesInit}
+            loaded={particlesLoaded}
+            options={particleOptions}
+          />
+        </div>
+      )}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1 }}
         className="z-10 flex flex-col items-center gap-6"
       >
-        <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold font-headline tracking-tight">
+        <h1 className="text-4xl font-bold tracking-tight sm:text-5xl md:text-7xl font-headline">
           Udhayaboopathi
         </h1>
-        <div className="text-base sm:text-lg md:text-xl text-primary font-medium h-6">
+        <div className="h-6 text-base font-medium text-primary sm:text-lg md:text-xl">
           {isMounted && (
             <TypeAnimation
               sequence={[
@@ -147,7 +154,7 @@ export default function Hero() {
           className="absolute bottom-10 left-1/2 -translate-x-1/2"
         >
           <a href="#about" aria-label="Scroll down">
-            <ArrowDown className="w-8 h-8 text-foreground/50 animate-bounce" />
+            <ArrowDown className="h-8 w-8 text-foreground/50 animate-bounce" />
           </a>
         </motion.div>
     </section>
