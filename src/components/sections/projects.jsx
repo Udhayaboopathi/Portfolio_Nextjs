@@ -153,7 +153,14 @@ export default function Projects({ content }) {
                     >
                         <Card className="group relative overflow-hidden rounded-lg shadow-lg h-full flex flex-col">
                             <div className="relative h-56">
-                                <Image src={project.image} alt={project.title} fill className="object-cover transition-transform duration-500 ease-in-out group-hover:scale-110" data-ai-hint={project.aiHint} />
+                                <Image 
+                                    src={project.image} 
+                                    alt={project.title} 
+                                    fill 
+                                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                                    className="object-cover transition-transform duration-500 ease-in-out group-hover:scale-110" 
+                                    data-ai-hint={project.aiHint} 
+                                />
                             </div>
                             <div className="p-6 flex flex-col flex-grow">
                                 <CardTitle className="mb-2">{project.title}</CardTitle>
