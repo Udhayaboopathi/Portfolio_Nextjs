@@ -12,12 +12,12 @@ import { useTheme } from "next-themes";
 
 export default function Hero() {
   const { theme } = useTheme();
-  const [particleColor, setParticleColor] = useState(["#ffffff", "#fde047", "#8b5cf6"]);
+  const [particleColor, setParticleColor] = useState(["#ffffff"]);
 
   useEffect(() => {
     // This hook ensures the particle color is updated on the client-side
     // after the theme is resolved, avoiding hydration mismatches.
-    setParticleColor(theme === 'dark' ? ["#ffffff", "#fde047", "#a78bfa"] : ["#4c1d95", "#f59e0b", "#8b5cf6"]);
+    setParticleColor(theme === 'dark' ? ["#ffffff", "#ffff00", "#0000ff"] : ["#0000ff", "#000000", "#333333"]);
   }, [theme]);
 
   const particlesInit = useCallback(async (engine) => {
