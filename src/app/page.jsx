@@ -7,7 +7,7 @@ import Timeline from '@/components/sections/timeline';
 import Toolbox from '@/components/sections/toolbox';
 import Testimonials from '@/components/sections/testimonials';
 import Contact from '@/components/sections/contact';
-import Footer from '@/components/footer';
+import Footer from '@/components/footer.jsx';
 
 export default function Home() {
   const aboutContent = `I am a web developer with a passion for creating beautiful and functional websites. I have a strong understanding of web technologies and a desire to learn new things.`;
