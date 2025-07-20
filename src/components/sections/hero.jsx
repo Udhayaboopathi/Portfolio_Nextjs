@@ -13,11 +13,11 @@ import { useTheme } from "next-themes";
 export default function Hero() {
   const { theme } = useTheme();
   const [particleColor, setParticleColor] = useState(["#ffffff"]);
+  const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
-    // This hook ensures the particle color is updated on the client-side
-    // after the theme is resolved, avoiding hydration mismatches.
-    setParticleColor(theme === 'dark' ? ["#ffffff", "#eab308"] : ["#000000", "#eab308"]);
+    setIsMounted(true);
+    setParticleColor(theme === 'dark' ? ["#ffffff", "#facc15"] : ["#000000", "#facc15"]);
   }, [theme]);
 
   const particlesInit = useCallback(async (engine) => {
@@ -25,7 +25,6 @@ export default function Hero() {
   }, []);
 
   const particlesLoaded = useCallback(async (container) => {
-    // You can add logic here for when particles are loaded
   }, []);
 
   const particleOptions = {
@@ -92,7 +91,7 @@ export default function Hero() {
   };
 
   return (
-    <section id="home" className="relative h-screen w-full flex items-center justify-center text-center p-0 overflow-hidden">
+    <section id="home" className="relative h-screen w-full flex items-center justify-center text-center overflow-hidden p-4">
       <div className="absolute inset-0 -z-10">
         <Particles
           id="tsparticles"
@@ -105,27 +104,30 @@ export default function Hero() {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1 }}
-        className="z-10 flex flex-col items-center gap-6 p-4"
+        className="z-10 flex flex-col items-center gap-6"
       >
-        <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-bold font-headline tracking-tight">
+        <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold font-headline tracking-tight">
           Udhayaboopathi
         </h1>
-        <TypeAnimation
-          sequence={[
-            'I am a Passionate Developer',
-            1500,
-            'I build things for the web.',
-            1500,
-            'I love creating beautiful UIs.',
-            1500,
-            'I solve problems with code.',
-            1500
-          ]}
-          wrapper="p"
-          speed={50}
-          className="text-base sm:text-lg md:text-xl text-primary font-medium h-6"
-          repeat={Infinity}
-        />
+        <div className="text-base sm:text-lg md:text-xl text-primary font-medium h-6">
+          {isMounted && (
+            <TypeAnimation
+              sequence={[
+                'I am a Passionate Developer',
+                1500,
+                'I build things for the web.',
+                1500,
+                'I love creating beautiful UIs.',
+                1500,
+                'I solve problems with code.',
+                1500
+              ]}
+              wrapper="p"
+              speed={50}
+              repeat={Infinity}
+            />
+          )}
+        </div>
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
