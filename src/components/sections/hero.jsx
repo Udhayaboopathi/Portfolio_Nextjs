@@ -17,7 +17,7 @@ export default function Hero() {
   useEffect(() => {
     // This hook ensures the particle color is updated on the client-side
     // after the theme is resolved, avoiding hydration mismatches.
-    setParticleColor(theme === 'dark' ? ["#ffffff", "#ffff00"] : ["#000000", "#eab308"]);
+    setParticleColor(theme === 'dark' ? ["#ffffff", "#eab308"] : ["#000000", "#eab308"]);
   }, [theme]);
 
   const particlesInit = useCallback(async (engine) => {
