@@ -47,16 +47,16 @@ export default function Skills({ content }) {
     };
 
     return (
-        <section id="skills" className="container mx-auto">
+        <section id="skills" className="bg-card">
             <motion.div
                 initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5 }}
-                className="bg-card p-8 md:p-12 rounded-lg"
+                className="container mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-32"
             >
                 <h2 className="text-3xl font-bold text-center mb-2 font-headline md:text-4xl">My Skills</h2>
-                <p className="text-muted-foreground text-center mb-8 max-w-2xl mx-auto">My technical level</p>
+                <p className="text-muted-foreground text-center mb-12 max-w-2xl mx-auto">My technical level</p>
 
                 <TooltipProvider>
                     <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-4 gap-6 max-w-4xl mx-auto">
@@ -71,7 +71,7 @@ export default function Skills({ content }) {
                             >
                                 <Tooltip>
                                     <TooltipTrigger asChild>
-                                        <div className="flex flex-col items-center gap-3 p-4 rounded-lg bg-secondary shadow-md hover:shadow-primary/20 hover:scale-105 transition-all cursor-pointer aspect-square justify-center">
+                                        <div className="flex flex-col items-center gap-3 p-4 rounded-lg bg-background shadow-md hover:shadow-primary/20 hover:scale-105 transition-all cursor-pointer aspect-square justify-center">
                                             {skill.icon}
                                             <span className="text-sm font-medium text-center">{skill.name}</span>
                                         </div>

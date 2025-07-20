@@ -26,8 +26,8 @@ export default function Toolbox() {
   };
 
   return (
-    <section id="toolbox" className="container mx-auto">
-        <div className="bg-card p-8 md:p-12 rounded-lg">
+    <section id="toolbox" className="bg-card">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-32">
             <motion.div
                 initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -52,7 +52,7 @@ export default function Toolbox() {
                         >
                             <Tooltip>
                                 <TooltipTrigger asChild>
-                                    <div className="flex flex-col items-center text-center gap-3 p-4 rounded-lg bg-secondary shadow-md hover:shadow-primary/20 hover:scale-105 transition-all cursor-pointer aspect-square justify-center">
+                                    <div className="flex flex-col items-center text-center gap-3 p-4 rounded-lg bg-background shadow-md hover:shadow-primary/20 hover:scale-105 transition-all cursor-pointer aspect-square justify-center">
                                         {tool.icon}
                                         <span className="text-sm font-medium">{tool.name}</span>
                                     </div>

@@ -31,7 +31,7 @@ const education = [
 
 export default function About({ content }) {
     return (
-        <section id="about" className="container mx-auto">
+        <section id="about" className="container mx-auto px-4 sm:px-6 lg:px-8">
             <motion.div
                 initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}

@@ -72,13 +72,13 @@ export default function Contact({ aboutSection, projectsSection, skillsSection }
 
   return (
     <>
-      <section id="contact" className="container mx-auto">
+      <section id="contact" className="bg-card">
           <motion.div
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
-              className="max-w-2xl mx-auto bg-card p-8 md:p-12 rounded-lg"
+              className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-2xl py-20 lg:py-32"
           >
             <h2 className="text-3xl font-bold text-center mb-2 font-headline md:text-4xl">Get In Touch</h2>
             <p className="text-muted-foreground text-center mb-12">I'm currently available for freelance work.</p>

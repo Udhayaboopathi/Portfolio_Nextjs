@@ -30,7 +30,7 @@ const timelineEvents = [
 
 export default function Timeline() {
     return (
-        <section id="timeline" className="container mx-auto">
+        <section id="timeline" className="container mx-auto px-4 sm:px-6 lg:px-8">
             <motion.div
                 initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -43,7 +43,7 @@ export default function Timeline() {
             </motion.div>
 
             <div className="relative max-w-3xl mx-auto">
-                <div className="absolute left-9 h-full w-0.5 bg-border/70 md:left-1/2 md:-translate-x-1/2"></div>
+                <div className="absolute left-9 top-0 h-full w-0.5 bg-border/70 md:left-1/2 md:-translate-x-1/2" />
                 {timelineEvents.map((event, index) => (
                     <motion.div
                         key={index}
@@ -51,43 +51,26 @@ export default function Timeline() {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.5, delay: index * 0.2 }}
-                        className="mb-8 relative flex items-start w-full"
+                        className="mb-8 relative flex w-full items-start md:even:flex-row-reverse"
                     >
-                         <div className="absolute top-0 left-9 -translate-x-1/2 z-10 md:left-1/2">
+                        <div className="absolute top-0 left-9 -translate-x-1/2 z-10 md:left-1/2">
                             <div className="w-12 h-12 bg-primary rounded-full flex items-center justify-center text-primary-foreground shadow-lg ring-8 ring-background">
                                 {event.icon}
                             </div>
                         </div>
 
-                        <div className="w-full md:w-1/2 md:pr-16 pl-24 md:pl-0">
-                           {index % 2 !== 0 && (
-                                <Card className="bg-card text-left">
-                                    <CardHeader>
-                                        <p className="text-sm text-muted-foreground">{event.date}</p>
-                                        <CardTitle>{event.title}</CardTitle>
-                                        <CardDescription>{event.subtitle}</CardDescription>
-                                    </CardHeader>
-                                    <CardContent>
-                                        <p className="text-sm text-muted-foreground">{event.description}</p>
-                                    </CardContent>
-                                </Card>
-                           )}
+                        <div className="w-full md:w-1/2 pl-24 md:pl-0 md:pr-12 md:even:pr-0 md:even:pl-12">
+                            <Card className="bg-card text-left">
+                                <CardHeader>
+                                    <p className="text-sm text-muted-foreground">{event.date}</p>
+                                    <CardTitle>{event.title}</CardTitle>
+                                    <CardDescription>{event.subtitle}</CardDescription>
+                                </CardHeader>
+                                <CardContent>
+                                    <p className="text-sm text-muted-foreground">{event.description}</p>
+                                </CardContent>
+                            </Card>
                         </div>
-                       
-                       <div className="w-full md:w-1/2 md:pl-16 pl-24">
-                           {index % 2 === 0 && (
-                                <Card className="bg-card text-left">
-                                    <CardHeader>
-                                        <p className="text-sm text-muted-foreground">{event.date}</p>
-                                        <CardTitle>{event.title}</CardTitle>
-                                        <CardDescription>{event.subtitle}</CardDescription>
-                                    </CardHeader>
-                                    <CardContent>
-                                        <p className="text-sm text-muted-foreground">{event.description}</p>
-                                    </CardContent>
-                                </Card>
-                           )}
-                       </div>
                     </motion.div>
                 ))}
             </div>
