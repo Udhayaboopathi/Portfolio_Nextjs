@@ -33,17 +33,14 @@ export default function Navbar() {
 
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
-
-      const scrollPosition = window.scrollY + 160; // Adjusted for better accuracy
+      const scrollPosition = window.scrollY + 160;
       let currentSection = '#home';
-
       navLinks.forEach(link => {
         const section = document.querySelector(link.href);
         if (section && section.offsetTop <= scrollPosition) {
           currentSection = link.href;
         }
       });
-
       setActiveLink(currentSection);
     };
 
@@ -51,6 +48,7 @@ export default function Navbar() {
     handleScroll();
     return () => window.removeEventListener('scroll', handleScroll);
   }, [isMounted]);
+
 
   const toggleMenu = () => {
     setIsMenuOpen(prev => !prev);
@@ -60,10 +58,13 @@ export default function Navbar() {
     setIsMenuOpen(false);
     const section = document.querySelector(href);
     if (section) {
-        section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        // Use a slight delay to ensure the menu is closing before scrolling
+        setTimeout(() => {
+            section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }, 100);
     }
   };
-
+  
   return (
     <header
       className={cn(
@@ -112,14 +113,14 @@ export default function Navbar() {
           </Button>
         </div>
       </div>
-
+      
       <AnimatePresence>
         {isMenuOpen && (
           <motion.div
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden overflow-hidden"
+            className="md:hidden overflow-hidden bg-background/80 backdrop-blur-sm"
           >
             <nav className="flex flex-col items-center gap-4 py-4">
               {navLinks.map((link) => (

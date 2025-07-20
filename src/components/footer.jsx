@@ -8,10 +8,10 @@ import { Button } from './ui/button';
 import { Code2 } from 'lucide-react';
 
 export default function Footer() {
-  const [currentYear, setCurrentYear] = useState(null);
+  const [currentYear, setCurrentYear] = useState('');
 
   useEffect(() => {
-    setCurrentYear(new Date().getFullYear());
+    setCurrentYear(new Date().getFullYear().toString());
   }, []);
 
   return (
@@ -38,8 +38,8 @@ export default function Footer() {
             </Link>
           </Button>
         </div>
-        <p className="text-sm">
-          {currentYear ? `© ${currentYear} Udhayaboopathi. All rights reserved.` : '© Udhayaboopathi. All rights reserved.'}
+        <p className="text-sm h-5">
+          {currentYear && `© ${currentYear} Udhayaboopathi. All rights reserved.`}
         </p>
       </div>
     </footer>
