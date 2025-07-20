@@ -27,7 +27,7 @@ export default function Toolbox() {
 
   return (
     <section id="toolbox" className="bg-card">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-32">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
             <motion.div
                 initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -40,7 +40,7 @@ export default function Toolbox() {
             </motion.div>
             
             <TooltipProvider>
-                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 max-w-5xl mx-auto">
+                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-6 max-w-5xl mx-auto">
                     {tools.map((tool, index) => (
                         <motion.div
                             key={tool.name}

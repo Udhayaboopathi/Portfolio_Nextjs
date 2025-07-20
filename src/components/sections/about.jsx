@@ -59,7 +59,7 @@ export default function About({ content }) {
                     </motion.div>
                     <div className="md:col-span-2">
                         <Tabs defaultValue="overview" className="w-full">
-                            <TabsList className="grid w-full grid-cols-3">
+                            <TabsList className="grid w-full grid-cols-1 sm:grid-cols-3 h-auto sm:h-10">
                                 <TabsTrigger value="overview"><User className="mr-2 h-4 w-4" />About Me</TabsTrigger>
                                 <TabsTrigger value="experience"><Briefcase className="mr-2 h-4 w-4" />Experience</TabsTrigger>
                                 <TabsTrigger value="education"><GraduationCap className="mr-2 h-4 w-4" />Education</TabsTrigger>

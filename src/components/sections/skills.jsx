@@ -53,13 +53,13 @@ export default function Skills({ content }) {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5 }}
-                className="container mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-32"
+                className="container mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24"
             >
                 <h2 className="text-3xl font-bold text-center mb-2 font-headline md:text-4xl">My Skills</h2>
                 <p className="text-muted-foreground text-center mb-12 max-w-2xl mx-auto">My technical level</p>
 
                 <TooltipProvider>
-                    <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-4 gap-6 max-w-4xl mx-auto">
+                    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
                         {allSkills.map((skill, index) => (
                             <motion.div
                                 key={skill.name}

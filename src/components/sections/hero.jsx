@@ -107,7 +107,7 @@ export default function Hero() {
         transition={{ duration: 1 }}
         className="z-10 flex flex-col items-center gap-6 p-4"
       >
-        <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold font-headline tracking-tight">
+        <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-bold font-headline tracking-tight">
           Udhayaboopathi
         </h1>
         <TypeAnimation
@@ -123,7 +123,7 @@ export default function Hero() {
           ]}
           wrapper="p"
           speed={50}
-          className="text-lg md:text-xl text-primary font-medium h-6"
+          className="text-base sm:text-lg md:text-xl text-primary font-medium h-6"
           repeat={Infinity}
         />
         <motion.div
