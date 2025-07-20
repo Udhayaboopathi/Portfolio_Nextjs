@@ -39,7 +39,7 @@ export default function Navbar() {
 
       for (let i = sections.length - 1; i >= 0; i--) {
         const section = sections[i];
-        if (section.offsetTop <= scrollPosition) {
+        if (section && section.offsetTop <= scrollPosition) {
           setActiveLink(navLinks[i].href);
           break;
         }
@@ -47,7 +47,7 @@ export default function Navbar() {
     };
 
     window.addEventListener('scroll', handleScroll);
-    handleScroll(); // Initial check
+    handleScroll();
     return () => window.removeEventListener('scroll', handleScroll);
   }, [isMounted]);
   
@@ -62,86 +62,82 @@ export default function Navbar() {
   };
 
   return (
-    <>
-      <motion.header
-        className={cn(
-          "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
-          isScrolled || isMenuOpen ? "bg-background/80 backdrop-blur-sm shadow-md" : "bg-transparent"
-        )}
-        initial={{ y: -100 }}
-        animate={{ y: 0 }}
-        transition={{ duration: 0.5 }}
-      >
-        <div className="container mx-auto flex h-20 items-center justify-between px-4 sm:px-6 lg:px-8">
-          <Link href="#home" className="flex items-center gap-2" onClick={() => setIsMenuOpen(false)}>
-            <motion.div
-              animate={{ rotate: [0, 15, -10, 5, 0] }}
-              transition={{ duration: 1.5, repeat: Infinity, repeatDelay: 2 }}
-            >
-              <Code2 className="h-8 w-8 text-primary" />
-            </motion.div>
-            <span className="text-xl font-bold font-headline">Udhayaboopathi</span>
-          </Link>
+    <header
+      className={cn(
+        "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
+        isScrolled || isMenuOpen ? "bg-background/80 backdrop-blur-sm shadow-md" : "bg-transparent"
+      )}
+    >
+      <div className="container mx-auto flex h-20 items-center justify-between px-4 sm:px-6 lg:px-8">
+        <Link href="#home" className="flex items-center gap-2" onClick={() => setIsMenuOpen(false)}>
+          <motion.div
+            animate={{ rotate: [0, 15, -10, 5, 0] }}
+            transition={{ duration: 1.5, repeat: Infinity, repeatDelay: 2 }}
+          >
+            <Code2 className="h-8 w-8 text-primary" />
+          </motion.div>
+          <span className="text-xl font-bold font-headline">Udhayaboopathi</span>
+        </Link>
 
-          <nav className="hidden md:flex items-center gap-6">
-            {navLinks.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                className={cn(
-                  "text-sm font-medium transition-colors hover:text-primary relative",
-                  activeLink === link.href ? "text-primary" : ""
-                )}
-              >
-                {link.name}
-                {activeLink === link.href && (
-                  <motion.div
-                    className="absolute -bottom-1 left-0 right-0 h-0.5 bg-primary"
-                    layoutId="active-link-underline"
-                  />
-                )}
-              </a>
-            ))}
-          </nav>
-          
-          <div className="flex items-center gap-2">
-            <ThemeToggle />
-            <Button variant="ghost" size="icon" className="md:hidden" onClick={toggleMenu}>
-              {isMenuOpen ? <X /> : <Menu />}
-              <span className="sr-only">Toggle menu</span>
-            </Button>
-          </div>
-        </div>
-        <AnimatePresence>
-          {isMenuOpen && (
-            <motion.div
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: 'auto' }}
-              exit={{ opacity: 0, height: 0 }}
-              className="absolute md:hidden top-20 left-0 right-0 z-40 bg-background/80 backdrop-blur-sm shadow-md overflow-hidden"
+        <nav className="hidden md:flex items-center gap-6">
+          {navLinks.map((link) => (
+            <a
+              key={link.href}
+              href={link.href}
+              className={cn(
+                "text-sm font-medium transition-colors hover:text-primary relative",
+                activeLink === link.href ? "text-primary" : ""
+              )}
             >
-              <nav className="flex flex-col items-center gap-6 py-8">
-                {navLinks.map((link) => (
-                  <a
-                    key={`mobile-${link.href}`}
-                    href={link.href}
-                    onClick={(e) => {
-                      e.preventDefault();
-                      handleMobileLinkClick(link.href);
-                    }}
-                    className={cn(
-                      "text-lg font-medium transition-colors hover:text-primary",
-                      activeLink === link.href ? "text-primary" : ""
-                    )}
-                  >
-                    {link.name}
-                  </a>
-                ))}
-              </nav>
-            </motion.div>
-          )}
-        </AnimatePresence>
-      </motion.header>
-    </>
+              {link.name}
+              {activeLink === link.href && (
+                <motion.div
+                  className="absolute -bottom-1 left-0 right-0 h-0.5 bg-primary"
+                  layoutId="active-link-underline"
+                />
+              )}
+            </a>
+          ))}
+        </nav>
+        
+        <div className="flex items-center gap-2">
+          <ThemeToggle />
+          <Button variant="ghost" size="icon" className="md:hidden" onClick={toggleMenu}>
+            {isMenuOpen ? <X /> : <Menu />}
+            <span className="sr-only">Toggle menu</span>
+          </Button>
+        </div>
+      </div>
+
+      <AnimatePresence>
+        {isMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: 'auto' }}
+            exit={{ opacity: 0, height: 0 }}
+            className="md:hidden bg-background/80 backdrop-blur-sm shadow-md overflow-hidden"
+          >
+            <nav className="flex flex-col items-center gap-6 py-8">
+              {navLinks.map((link) => (
+                <a
+                  key={`mobile-${link.href}`}
+                  href={link.href}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    handleMobileLinkClick(link.href);
+                  }}
+                  className={cn(
+                    "text-lg font-medium transition-colors hover:text-primary",
+                    activeLink === link.href ? "text-primary" : ""
+                  )}
+                >
+                  {link.name}
+                </a>
+              ))}
+            </nav>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </header>
   );
 }
