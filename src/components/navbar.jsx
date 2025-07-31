@@ -1,8 +1,5 @@
 
-"use client";
-
 import { useState, useEffect } from 'react';
-import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Code2, Menu, X } from 'lucide-react';
 import { ThemeToggle } from '@/components/theme-toggle';
@@ -79,7 +76,7 @@ export default function Navbar() {
       )}
     >
       <div className="container mx-auto flex h-20 items-center justify-between px-4 sm:px-6 lg:px-8">
-        <Link href="#home" className="flex items-center gap-2" onClick={() => handleMobileLinkClick('#home')}>
+        <a href="#home" className="flex items-center gap-2" onClick={() => handleMobileLinkClick('#home')}>
           <motion.div
             animate={{ rotate: [0, 15, -10, 5, 0] }}
             transition={{ duration: 1.5, repeat: Infinity, repeatDelay: 2 }}
@@ -87,7 +84,7 @@ export default function Navbar() {
             <Code2 className="h-8 w-8 text-primary" />
           </motion.div>
           <span className="text-xl font-bold font-headline">Udhayaboopathi</span>
-        </Link>
+        </a>
 
         <nav className="hidden md:flex items-center gap-6">
           {navLinks.map((link) => (

@@ -1,13 +1,9 @@
 
-"use client";
-
 import { motion } from 'framer-motion';
-import Image from 'next/image';
 import { Card, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Github, ExternalLink } from 'lucide-react';
-import Link from 'next/link';
 import { useState, useMemo } from 'react';
 
 const projects = [
@@ -153,12 +149,10 @@ export default function Projects({ content }) {
                     >
                         <Card className="group relative overflow-hidden rounded-lg shadow-lg h-full flex flex-col">
                             <div className="relative h-56">
-                                <Image 
+                                <img 
                                     src={project.image} 
                                     alt={project.title} 
-                                    fill 
-                                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                                    className="object-cover transition-transform duration-500 ease-in-out group-hover:scale-110" 
+                                    className="w-full h-full object-cover transition-transform duration-500 ease-in-out group-hover:scale-110" 
                                     data-ai-hint={project.aiHint} 
                                 />
                             </div>
@@ -169,15 +163,15 @@ export default function Projects({ content }) {
                                 </div>
                                 <p className="text-muted-foreground text-sm mb-4 flex-grow">{project.description}</p>
                                 <div className="flex justify-end gap-2 mt-auto">
-                                    <Button variant="outline" size="icon" asChild>
-                                        <Link href={project.github} target="_blank" rel="noopener noreferrer" aria-label={`GitHub for ${project.title}`}>
+                                    <Button variant="outline" size="icon">
+                                        <a href={project.github} target="_blank" rel="noopener noreferrer" aria-label={`GitHub for ${project.title}`}>
                                             <Github />
-                                        </Link>
+                                        </a>
                                     </Button>
-                                    <Button asChild>
-                                        <Link href={project.live} target="_blank" rel="noopener noreferrer" aria-label={`Live demo of ${project.title}`}>
+                                    <Button>
+                                        <a href={project.live} target="_blank" rel="noopener noreferrer" aria-label={`Live demo of ${project.title}`}>
                                             <ExternalLink className="mr-2" /> Live Demo
-                                        </Link>
+                                        </a>
                                     </Button>
                                 </div>
                             </div>

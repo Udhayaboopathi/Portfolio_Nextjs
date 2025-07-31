@@ -1,9 +1,6 @@
 
-"use client";
-
 import { useState, useEffect } from 'react';
 import { Github, Linkedin, Twitter } from 'lucide-react';
-import Link from 'next/link';
 import { Button } from './ui/button';
 import { Code2 } from 'lucide-react';
 
@@ -22,20 +19,20 @@ export default function Footer() {
           <span className="text-lg font-bold font-headline text-foreground">Udhayaboopathi</span>
         </div>
         <div className="flex justify-center gap-4 mb-4">
-          <Button variant="ghost" size="icon" asChild>
-            <Link href="https://github.com" target="_blank" aria-label="Github">
+          <Button variant="ghost" size="icon">
+            <a href="https://github.com" target="_blank" aria-label="Github">
               <Github />
-            </Link>
+            </a>
           </Button>
-          <Button variant="ghost" size="icon" asChild>
-            <Link href="https://linkedin.com" target="_blank" aria-label="LinkedIn">
+          <Button variant="ghost" size="icon">
+            <a href="https://linkedin.com" target="_blank" aria-label="LinkedIn">
               <Linkedin />
-            </Link>
+            </a>
           </Button>
-          <Button variant="ghost" size="icon" asChild>
-            <Link href="https://twitter.com" target="_blank" aria-label="Twitter">
+          <Button variant="ghost" size="icon">
+            <a href="https://twitter.com" target="_blank" aria-label="Twitter">
               <Twitter />
-            </Link>
+            </a>
           </Button>
         </div>
         <p className="text-sm h-5">

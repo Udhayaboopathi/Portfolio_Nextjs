@@ -1,6 +1,4 @@
 
-"use client"
-import Image from 'next/image';
 import { Briefcase, GraduationCap, User } from 'lucide-react';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Card, CardHeader, CardTitle, CardContent, CardDescription } from '@/components/ui/card';
@@ -49,13 +47,12 @@ export default function About({ content }) {
                       viewport={{ once: true }}
                       transition={{ duration: 0.5, delay: 0.2 }}
                     >
-                        <Image
+                        <img
                             src="https://placehold.co/400x400.png"
                             data-ai-hint="profile picture"
                             alt="Udhayaboopathi"
                             width={300}
                             height={300}
-                            sizes="(max-width: 768px) 100vw, 300px"
                             className="rounded-full object-cover border-4 border-primary shadow-lg aspect-square"
                         />
                     </motion.div>
