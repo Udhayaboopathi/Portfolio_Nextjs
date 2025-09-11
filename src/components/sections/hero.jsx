@@ -1,11 +1,10 @@
-
 "use client";
 
 import { useCallback, useEffect, useState } from "react";
 import Particles from "react-tsparticles";
 import { loadSlim } from "tsparticles-slim";
-import { TypeAnimation } from 'react-type-animation';
-import { motion } from 'framer-motion';
+import { TypeAnimation } from "react-type-animation";
+import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { ArrowDown } from "lucide-react";
 import { useTheme } from "next-themes";
@@ -21,7 +20,9 @@ export default function Hero() {
 
   useEffect(() => {
     if (isMounted) {
-      setParticleColor(theme === 'dark' ? ["#ffffff", "#facc15"] : ["#000000", "#facc15"]);
+      setParticleColor(
+        theme === "dark" ? ["#ffffff", "#facc15"] : ["#000000", "#facc15"]
+      );
     }
   }, [theme, isMounted]);
 
@@ -31,8 +32,11 @@ export default function Hero() {
 
   if (!isMounted) {
     return (
-      <section id="home" className="relative flex h-screen w-full items-center justify-center overflow-hidden p-4 text-center">
-        {/* Render a static background or nothing on the server to prevent hydration issues */}
+      <section
+        id="home"
+        className="relative flex h-screen w-full items-center justify-center overflow-hidden p-4 text-center"
+      >
+        {/* Render nothing until client mount to prevent hydration issues */}
       </section>
     );
   }
@@ -63,22 +67,13 @@ export default function Hero() {
       color: {
         value: particleColor,
       },
-      links: {
-        color: "#ffffff",
-        distance: 150,
-        enable: false,
-        opacity: 0.5,
-        width: 1,
-      },
       move: {
-        direction: "none",
         enable: true,
+        random: true,
+        speed: 1,
         outModes: {
           default: "bounce",
         },
-        random: true,
-        speed: 1,
-        straight: false,
       },
       number: {
         density: {
@@ -88,7 +83,7 @@ export default function Hero() {
         value: 80,
       },
       opacity: {
-        value: {min: 0.3, max: 0.8},
+        value: { min: 0.3, max: 0.8 },
       },
       shape: {
         type: "circle",
@@ -101,35 +96,53 @@ export default function Hero() {
   };
 
   return (
-    <section id="home" className="relative flex h-screen w-full items-center justify-center overflow-hidden p-4 text-center">
+    <section
+      id="home"
+      className="relative flex h-screen w-full items-center justify-center overflow-hidden p-4 text-center"
+    >
+      {/* Background Particles */}
       <div className="absolute inset-0 -z-10">
-        <Particles
-          id="tsparticles"
-          init={particlesInit}
-          options={particleOptions}
-        />
+        <Particles id="tsparticles" init={particlesInit} options={particleOptions} />
       </div>
+
+      {/* Content */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1 }}
         className="z-10 flex flex-col items-center gap-6"
       >
+        {/* Name */}
         <h1 className="text-4xl font-bold tracking-tight sm:text-5xl md:text-7xl font-headline">
-          Udhayaboopathi
+          I Am Udhayaboopathi
         </h1>
+
+        {/* Subtitle */}
+        <p className="text-lg text-muted-foreground sm:text-xl md:text-2xl">
+          Full Stack Developer | UI Enthusiast | Problem Solver
+        </p>
+
+        {/* Typing Animation */}
         <div className="h-6 text-base font-medium text-primary sm:text-lg md:text-xl">
           {isMounted && (
             <TypeAnimation
               sequence={[
-                'I am a Passionate Developer',
+                "I craft modern web experiences.",
                 1500,
-                'I build things for the web.',
+                "I turn ideas into code.",
                 1500,
-                'I love creating beautiful UIs.',
+                "I design with users in mind.",
                 1500,
-                'I solve problems with code.',
-                1500
+                "I develop scalable solutions.",
+                1500,
+                "I create animations that wow.",
+                1500,
+                "I bridge creativity and logic.",
+                1500,
+                "I write clean and efficient code.",
+                1500,
+                "I bring digital products to life.",
+                1500,
               ]}
               wrapper="p"
               speed={50}
@@ -137,28 +150,30 @@ export default function Hero() {
             />
           )}
         </div>
+
+        {/* Call To Action */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.5 }}
         >
           <Button size="lg" className="mt-8" asChild>
-            <a href="#projects">
-              View My Work
-            </a>
+            <a href="#projects">View My Work</a>
           </Button>
         </motion.div>
       </motion.div>
-       <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1, delay: 1.5 }}
-          className="absolute bottom-10 left-1/2 -translate-x-1/2"
-        >
-          <a href="#about" aria-label="Scroll down">
-            <ArrowDown className="h-8 w-8 text-foreground/50 animate-bounce" />
-          </a>
-        </motion.div>
+
+      {/* Scroll Down Indicator */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1, delay: 1.5 }}
+        className="absolute bottom-10 left-1/2 -translate-x-1/2"
+      >
+        <a href="#about" aria-label="Scroll down">
+          <ArrowDown className="h-8 w-8 text-foreground/50 animate-bounce" />
+        </a>
+      </motion.div>
     </section>
   );
 }

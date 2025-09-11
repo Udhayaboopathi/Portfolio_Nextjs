@@ -1,34 +1,51 @@
 
 "use client"
 import Image from 'next/image';
+import profile from "../../assets/image.png";
 import { Briefcase, GraduationCap, User } from 'lucide-react';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Card, CardHeader, CardTitle, CardContent, CardDescription } from '@/components/ui/card';
 import { motion } from 'framer-motion';
 
+const aboutContent = `I am a web developer with a passion for creating beautiful and functional websites. I have a strong understanding of web technologies and a desire to learn new things.`;
+
 const experience = [
-    {
-        role: 'Software Engineer',
-        company: 'Innovate Tech',
-        period: '2021 - Present',
-        description: 'Developing and maintaining web applications using modern technologies.'
-    },
-    {
-        role: 'Jr. Web Developer',
-        company: 'Digital Solutions',
-        period: '2019 - 2021',
-        description: 'Assisted in the development of websites and web applications for various clients.'
-    }
+  {
+    role: "MERN Stack Intern",
+    company: "Arttifai Tech",
+    period: "15 Days",
+    description: "Worked on building web applications using the MERN stack and gained hands-on experience in full-stack development."
+  },
+  {
+    role: "Digital Marketing Intern",
+    company: "First Success Technology, Salem",
+    period: "15 Days",
+    description: "Learned digital marketing strategies, SEO, and social media campaigns to enhance online visibility."
+  },
+  {
+    role: "Freelance Developer",
+    company: "Self-Employed",
+    period: "Ongoing",
+    description: "Completed multiple freelance projects, including web applications and websites for clients, focusing on clean UI and scalable solutions."
+  }
 ];
 
+
 const education = [
-    {
-        degree: 'Bachelor of Science in Computer Science',
-        institution: 'University of Technology',
-        period: '2015 - 2019',
-        description: 'Focused on web development and software engineering.'
-    }
+  {
+    degree: "Bachelor of Science in Computer Science",
+    institution: "Government Arts and Science College, Mettur",
+    period: "2021 - 2024",
+    description: "Focused on core computer science subjects including programming, data structures, and web development."
+  },
+  {
+    degree: "Master of Science in Computer Science",
+    institution: "Periyar University, Salem",
+    period: "2024 - 2026",
+    description: "Pursuing advanced studies in computer science with a focus on research, software engineering, and emerging technologies."
+  }
 ];
+
 
 export default function About({ content }) {
     return (
@@ -50,7 +67,7 @@ export default function About({ content }) {
                       transition={{ duration: 0.5, delay: 0.2 }}
                     >
                         <Image
-                            src="https://placehold.co/400x400.png"
+                            src= {profile}
                             data-ai-hint="profile picture"
                             alt="Udhayaboopathi"
                             width={300}
@@ -69,7 +86,7 @@ export default function About({ content }) {
                             <TabsContent value="overview" className="mt-6">
                                 <Card>
                                     <CardContent className="pt-6">
-                                        <p className="text-muted-foreground leading-relaxed">{content}</p>
+                                        <p className="text-muted-foreground leading-relaxed">{aboutContent}</p>
                                     </CardContent>
                                 </Card>
                             </TabsContent>
