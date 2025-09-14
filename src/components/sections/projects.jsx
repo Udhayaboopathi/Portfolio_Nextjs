@@ -11,7 +11,96 @@ import Link from 'next/link';
 import { useState, useMemo } from 'react';
 
 const projects = [
-    
+    {
+    "title": "SMART-SUMMARIZATION-Q-A-ASSISTANT-FOR-STUDENTS",
+    "description": "A full-featured e-commerce site with product listings, cart, checkout, and user authentication.",
+    "image": "https://placehold.co/600x400.png",
+    "aiHint": "ecommerce website",
+    "tags": ["Python"],
+    "github": "https://github.com/Udhayaboopathi/SMART-SUMMARIZATION-Q-A-ASSISTANT-FOR-STUDENTS",
+    "live": "#"
+  },
+  {
+    "title": "Portfolio_Nextjs",
+    "description": "A full-featured e-commerce site with product listings, cart, checkout, and user authentication.",
+    "image": "https://placehold.co/600x400.png",
+    "aiHint": "ecommerce website",
+    "tags": ["JavaScript", "CSS", "Next.js"],
+    "github": "https://github.com/Udhayaboopathi/Portfolio_Nextjs",
+    "live": "#"
+  },
+  {
+    "title": "Portfolio",
+    "description": "A full-featured e-commerce site with product listings, cart, checkout, and user authentication.",
+    "image": "https://placehold.co/600x400.png",
+    "aiHint": "ecommerce website",
+    "tags": ["HTML", "CSS", "JavaScript", "PHP"],
+    "github": "https://github.com/Udhayaboopathi/Portfolio",
+    "live": "#"
+  },
+  {
+    "title": "CodeCrest.tech",
+    "description": "A full-featured e-commerce site with product listings, cart, checkout, and user authentication.",
+    "image": "https://placehold.co/600x400.png",
+    "aiHint": "ecommerce website",
+    "tags": ["JavaScript", "HTML", "CSS"],
+    "github": "https://github.com/Udhayaboopathi/CodeCrest.tech",
+    "live": "#"
+  },
+  {
+    "title": "AI-Prompt-Quality-Analyzer",
+    "description": "A full-featured e-commerce site with product listings, cart, checkout, and user authentication.",
+    "image": "https://placehold.co/600x400.png",
+    "aiHint": "ecommerce website",
+    "tags": ["HTML"],
+    "github": "https://github.com/Udhayaboopathi/AI-Prompt-Quality-Analyzer",
+    "live": "#"
+  },
+  {
+    "title": "Do-To-list",
+    "description": "A full-featured e-commerce site with product listings, cart, checkout, and user authentication.",
+    "image": "https://placehold.co/600x400.png",
+    "aiHint": "ecommerce website",
+    "tags": ["JavaScript", "CSS", "HTML"],
+    "github": "https://github.com/Udhayaboopathi/Do-To-list",
+    "live": "#"
+  },
+  {
+    "title": "Do-To",
+    "description": "A full-featured e-commerce site with product listings, cart, checkout, and user authentication.",
+    "image": "https://placehold.co/600x400.png",
+    "aiHint": "ecommerce website",
+    "tags": ["JavaScript", "CSS", "HTML"],
+    "github": "https://github.com/Udhayaboopathi/Do-To",
+    "live": "#"
+  },
+  {
+    "title": "DeepLeaning_Arttifai_Tech_batch_8",
+    "description": "A full-featured e-commerce site with product listings, cart, checkout, and user authentication.",
+    "image": "https://placehold.co/600x400.png",
+    "aiHint": "ecommerce website",
+    "tags": ["Python"],
+    "github": "https://github.com/Udhayaboopathi/DeepLeaning_Arttifai_Tech_batch_8",
+    "live": "#"
+  },
+  {
+    "title": "Udhayaboopathi.github.io",
+    "description": "A full-featured e-commerce site with product listings, cart, checkout, and user authentication.",
+    "image": "https://placehold.co/600x400.png",
+    "aiHint": "ecommerce website",
+    "tags": [],
+    "github": "https://github.com/Udhayaboopathi/Udhayaboopathi.github.io",
+    "live": "#"
+  },
+  {
+    "title": "SMART-SUMMARIZATION-Q-A-ASSISTANT-FOR-STUDENTS-REACT",
+    "description": "A full-featured e-commerce site with product listings, cart, checkout, and user authentication.",
+    "image": "https://placehold.co/600x400.png",
+    "aiHint": "ecommerce website",
+    "tags": ["JavaScript", "Other"],
+        "github": "https://github.com/Udhayaboopathi/SMART-SUMMARIZATION-Q-A-ASSISTANT-FOR-STUDENTS-REACT",
+        "live": "#"
+    }
 ];
 
 const INITIAL_PROJECT_COUNT = 3;
