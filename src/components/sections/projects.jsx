@@ -60,7 +60,6 @@ const projects = [
   "aiHint": "python summarization qa backend",
   "tags": ["Python", "NLP", "Summarization", "FastAPI", "MongoDB", "Other"],
   "github": "https://github.com/Udhayaboopathi/SMART-SUMMARIZATION-Q-A-ASSISTANT-FOR-STUDENTS",
-  "visibility": "private",
   "live": "#"
 },
   {
