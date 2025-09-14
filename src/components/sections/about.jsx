@@ -49,7 +49,7 @@ const education = [
 
 export default function About({ content }) {
     return (
-        <section id="about" className="container mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="about" className="container mx-auto px-4 sm:px-6 lg:px-8 scroll-mt-15">
             <motion.div
                 initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -75,6 +75,7 @@ export default function About({ content }) {
                             sizes="(max-width: 768px) 100vw, 300px"
                             className="rounded-full object-cover border-4 border-primary shadow-lg aspect-square"
                         />
+                        
                     </motion.div>
                     <div className="md:col-span-2">
                         <Tabs defaultValue="overview" className="w-full">

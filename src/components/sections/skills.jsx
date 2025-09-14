@@ -4,32 +4,50 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
 import { Button } from '@/components/ui/button';
-import { Code, Database, Wind, Server, Palette, Bot, GitMerge, Braces, Rocket, Cog } from 'lucide-react';
+import { 
+    SiReact,
+    SiNextdotjs,
+    SiTypescript,
+    SiTailwindcss,
+    SiNodedotjs,
+    SiPython,
+    SiFirebase,
+    SiExpress,
+    SiPostgresql,
+    SiMongodb,
+    SiMysql,
+    SiGit,
+    SiDocker,
+    SiFigma,
+    SiOpenai,
+    SiFlask,
+    SiJavascript ,
+    SiFastapi
+} from 'react-icons/si';
 
+const iconClass = "w-10 h-10 text-primary";
 const skillsData = {
-  'Frontend': [
-    { name: 'React', icon: <Code className="w-10 h-10 text-primary" /> },
-    { name: 'Next.js', icon: <Rocket className="w-10 h-10 text-primary" /> },
-    { name: 'TypeScript', icon: <Braces className="w-10 h-10 text-primary" /> },
-    { name: 'Tailwind CSS', icon: <Wind className="w-10 h-10 text-primary" /> },
-  ],
-  'Backend': [
-    { name: 'Node.js', icon: <Server className="w-10 h-10 text-primary" /> },
-    { name: 'Python', icon: <Code className="w-10 h-10 text-primary" /> },
-    { name: 'Firebase', icon: <Database className="w-10 h-10 text-primary" /> },
-    { name: 'Express.js', icon: <Server className="w-10 h-10 text-primary" /> },
-  ],
-  'Database': [
-      { name: 'PostgreSQL', icon: <Database className="w-10 h-10 text-primary" /> },
-      { name: 'MongoDB', icon: <Database className="w-10 h-10 text-primary" /> },
-      { name: 'SQL', icon: <Database className="w-10 h-10 text-primary" /> },
-  ],
-  'Tools & More': [
-      { name: 'Git & GitHub', icon: <GitMerge className="w-10 h-10 text-primary" /> },
-      { name: 'Docker', icon: <Cog className="w-10 h-10 text-primary" /> },
-      { name: 'Figma', icon: <Palette className="w-10 h-10 text-primary" /> },
-      { name: 'GenAI', icon: <Bot className="w-10 h-10 text-primary" /> },
-  ]
+    'Frontend': [
+        { name: 'React', icon: <SiReact className={iconClass} /> },
+        { name: 'Next.js', icon: <SiNextdotjs className={iconClass} /> },
+        { name: 'JavaScript', icon: <SiJavascript className={iconClass} /> },
+        { name: 'Tailwind CSS', icon: <SiTailwindcss className={iconClass} /> },
+    ],
+    'Backend': [
+        { name: 'Python', icon: <SiPython className={iconClass} /> },
+        { name: 'Flask', icon: <SiFlask className={iconClass} /> },
+        { name: 'FastAPI', icon: <SiFastapi className={iconClass} /> },
+        { name: 'Express.js', icon: <SiExpress className={iconClass} /> },
+    ],
+    'Database': [
+            { name: 'PostgreSQL', icon: <SiPostgresql className={iconClass} /> },
+            { name: 'MongoDB', icon: <SiMongodb className={iconClass} /> },
+            { name: 'MySQL', icon: <SiMysql className={iconClass} /> },
+    ],
+    'Tools & More': [
+        { name: 'Git', icon: <SiGit className={iconClass} /> },
+        { name: 'OpenAI', icon: <SiOpenai className={iconClass} /> },
+    ]
 };
 
 const allSkills = Object.values(skillsData).flat();
@@ -47,13 +65,13 @@ export default function Skills({ content }) {
     };
 
     return (
-        <section id="skills" className="bg-card">
+    <section id="skills" className="container mx-auto px-4 sm:px-6 lg:px-8 scroll-mt-[78px]">
             <motion.div
                 initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5 }}
-                className="container mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24"
+                className="container mx-auto "
             >
                 <h2 className="text-3xl font-bold text-center mb-2 font-headline md:text-4xl">My Skills</h2>
                 <p className="text-muted-foreground text-center mb-12 max-w-2xl mx-auto">My technical level</p>

@@ -25,7 +25,7 @@ const projects = [
     description: 'A collaborative task management tool with drag-and-drop boards, real-time updates, and notifications.',
     image: 'https://placehold.co/600x400.png',
     aiHint: 'task management',
-    tags: ['React', 'Firebase', 'Tailwind CSS', 'Framer Motion'],
+    tags: ['React', 'Firebase', 'Tailwind CSS', 'Framer Motion',"udhay"],
     github: 'https://github.com',
     live: '#',
   },
@@ -110,7 +110,7 @@ export default function Projects({ content }) {
     };
 
     return (
-        <section id="projects" className="container mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="projects" className="container mx-auto px-4 sm:px-6 lg:px-8 scroll-mt-15">
             <motion.div
                 initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}

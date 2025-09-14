@@ -1,6 +1,10 @@
+
 import './globals.css';
 import { ThemeProvider } from '@/components/theme-provider';
 import { Toaster } from "@/components/ui/toaster";
+
+import PageTransition from '@/components/PageTransition';
+import { ScrollProgressProvider } from '@/components/ScrollProgressProvider';
 
 
 export const metadata = {
@@ -8,9 +12,8 @@ export const metadata = {
   description: "A modern portfolio for developers, created with Next.js and Firebase.",
 };
 
-export default function RootLayout({
-  children,
-}) {
+
+export default function RootLayout({ children }) {
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
@@ -25,7 +28,10 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          {children}
+          <ScrollProgressProvider />
+          <PageTransition>
+            {children}
+          </PageTransition>
           <Toaster />
         </ThemeProvider>
       </body>

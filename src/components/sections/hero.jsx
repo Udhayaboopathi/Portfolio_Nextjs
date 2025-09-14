@@ -4,7 +4,7 @@ import { useCallback, useEffect, useState } from "react";
 import Particles from "react-tsparticles";
 import { loadSlim } from "tsparticles-slim";
 import { TypeAnimation } from "react-type-animation";
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { ArrowDown } from "lucide-react";
 import { useTheme } from "next-themes";
@@ -29,6 +29,13 @@ export default function Hero() {
   const particlesInit = useCallback(async (engine) => {
     await loadSlim(engine);
   }, []);
+
+  const { scrollY } = useScroll();
+  // Parallax transforms
+  const titleY = useTransform(scrollY, [0, 400], [0, 120]);
+  const subtitleY = useTransform(scrollY, [0, 400], [0, 160]);
+  const fadeOut = useTransform(scrollY, [0, 400], [1, 0]);
+  const scaleBg = useTransform(scrollY, [0, 600], [1, 1.15]);
 
   if (!isMounted) {
     return (
@@ -98,29 +105,37 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="relative flex h-screen w-full items-center justify-center overflow-hidden p-4 text-center"
+      className="relative flex h-screen w-full items-center justify-center overflow-hidden p-4 text-center scroll-mt-32"
     >
       {/* Background Particles */}
-      <div className="absolute inset-0 -z-10">
+      <motion.div className="absolute inset-0 -z-10" style={{ scale: scaleBg }}>
         <Particles id="tsparticles" init={particlesInit} options={particleOptions} />
-      </div>
+      </motion.div>
 
       {/* Content */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1 }}
-        className="z-10 flex flex-col items-center gap-6"
+        className="z-10 flex flex-col items-center gap-6 will-change-transform"
+        style={{ opacity: fadeOut }}
       >
         {/* Name */}
-        <h1 className="text-4xl font-bold tracking-tight sm:text-5xl md:text-7xl font-headline">
+        <motion.h1
+          className="text-4xl font-bold tracking-tight sm:text-5xl md:text-7xl font-headline"
+          style={{ y: titleY }}
+        >
           I Am Udhayaboopathi
-        </h1>
+        </motion.h1>
 
         {/* Subtitle */}
-        <p className="text-lg text-muted-foreground sm:text-xl md:text-2xl">
-          Full Stack Developer | UI Enthusiast | Problem Solver
-        </p>
+        <motion.p
+          className="text-base text-muted-foreground sm:text-lg md:text-xl"
+
+          style={{ y: subtitleY }}
+        >
+          Full Stack Developer | Problem Solver | Automation & Backend Integration | Interactive Web Experiences Creator
+        </motion.p>
 
         {/* Typing Animation */}
         <div className="h-6 text-base font-medium text-primary sm:text-lg md:text-xl">
