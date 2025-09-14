@@ -62,37 +62,30 @@ const projects = [
   "github": "https://github.com/Udhayaboopathi/SMART-SUMMARIZATION-Q-A-ASSISTANT-FOR-STUDENTS",
   "live": "#"
 },
+{
+  "title": "Organic Food Recommendations",
+  "description": "A mini project (PG Sathya) combining Python-based recommendation logic with a web interface (HTML/CSS/JS) to suggest organic or healthier food alternatives based on user input or dataset attributes.",
+  "aiHint": "organic food recommendation system",
+  "tags": ["Python", "Recommendation-System", "Web", "Nutrition", "Organic"],
+  "github": "https://github.com/Udhayaboopathi/Organic-Food-Recommendations",
+  "live": "#"
+},
   {
-    title: "Do-To",
-    description:
-      "A full-featured e-commerce site with product listings, cart, checkout, and user authentication.",
-    // image removed
-    aiHint: "ecommerce website",
-    tags: ["JavaScript", "CSS", "HTML"],
-    github: "https://github.com/Udhayaboopathi/Do-To",
-    live: "#",
-  },
+  "title": "First Portfolio",
+  "description": "Personal portfolio site (initial version) showcasing projects and profile. Built primarily with static HTML (likely with CSS/JS assets) and configured for GitHub Pages deployment.",
+  "aiHint": "personal portfolio static site",
+  "tags": ["Portfolio", "HTML", "Web"],
+  "github": "https://github.com/Udhayaboopathi/First-Portfolio",
+  "live": "https://udhayaboopathi.github.io/First-Portfolio/"
+},
   {
-    title: "DeepLeaning_Arttifai_Tech_batch_8",
-    description:
-      "A full-featured e-commerce site with product listings, cart, checkout, and user authentication.",
-    // image removed
-    aiHint: "ecommerce website",
-    tags: ["Python"],
-    github:
-      "https://github.com/Udhayaboopathi/DeepLeaning_Arttifai_Tech_batch_8",
-    live: "#",
-  },
-  {
-    title: "Udhayaboopathi.github.io",
-    description:
-      "A full-featured e-commerce site with product listings, cart, checkout, and user authentication.",
-    // image removed
-    aiHint: "ecommerce website",
-    tags: [],
-    github: "https://github.com/Udhayaboopathi/Udhayaboopathi.github.io",
-    live: "#",
-  },
+  "title": "Discord Bot (Python)",
+  "description": "Private Python-based Discord bot project. Likely uses discord.py (or nextcord/py-cord) to implement custom commands, event handlers, and possibly moderation or utility features.",
+  "aiHint": "python discord bot commands events",
+  "tags": ["Python", "Discord-Bot", "Automation"],
+  "github": "https://github.com/Udhayaboopathi/Discord-bot-python",
+  "visibility": "private"
+},
   {
     title: "SMART-SUMMARIZATION-Q-A-ASSISTANT-FOR-STUDENTS-REACT",
     description:
@@ -223,16 +216,22 @@ export default function Projects({ content }) {
                       <Github />
                     </Link>
                   </Button>
-                  <Button asChild>
-                    <Link
-                      href={project.live}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      aria-label={`Live demo of ${project.title}`}
-                    >
+                  {project.live && typeof project.live === 'string' && project.live !== '#' ? (
+                    <Button asChild>
+                      <Link
+                        href={project.live}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label={`Live demo of ${project.title}`}
+                      >
+                        <ExternalLink className="mr-2" /> Live Demo
+                      </Link>
+                    </Button>
+                  ) : (
+                    <Button variant="outline" size="icon" disabled title="No live demo available">
                       <ExternalLink className="mr-2" /> Live Demo
-                    </Link>
-                  </Button>
+                    </Button>
+                  )}
                 </div>
               </div>
             </Card>
