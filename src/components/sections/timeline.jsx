@@ -1,31 +1,32 @@
 "use client";
 
 import { motion } from 'framer-motion';
-import { Briefcase, Building, GraduationCap } from 'lucide-react';
+import { Briefcase, Building, GraduationCap,Sparkles } from 'lucide-react';
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card';
 
 const timelineEvents = [
     {
-        icon: <Building className="w-6 h-6" />,
-        date: "2021 - Present",
-        title: "Software Engineer",
-        subtitle: "Innovate Tech",
-        description: "Developing and maintaining web applications using modern technologies."
-    },
-    {
-        icon: <Briefcase className="w-6 h-6" />,
-        date: "2019 - 2021",
-        title: "Jr. Web Developer",
-        subtitle: "Digital Solutions",
-        description: "Assisted in the development of websites and web applications for various clients."
-    },
-    {
-        icon: <GraduationCap className="w-6 h-6" />,
-        date: "2015 - 2019",
-        title: "Bachelor of Science in Computer Science",
-        subtitle: "University of Technology",
-        description: "Focused on web development and software engineering."
-    },
+    icon: <Sparkles className="w-6 h-6" />,
+    date: "Coming Soon...",
+    title: "Dream Role in Progress",
+    subtitle: "Stay Tuned 😉",
+    description: "Crafting something extraordinary... the code, the impact, and the future are still compiling."
+},
+
+{
+    icon: <GraduationCap className="w-6 h-6" />,
+    date: "2024 - 2026",
+    title: "Master of Science in Computer Science",
+    subtitle: "Periyar University, Salem",
+    description: "Pursuing advanced studies in computer science with a focus on research, software engineering, and emerging technologies."
+},
+{
+    icon: <GraduationCap className="w-6 h-6" />,
+    date: "2021 - 2024",
+    title: "Bachelor of Science in Computer Science",
+    subtitle: "Government Arts and Science College, Mettur",
+    description: "Focused on core computer science subjects including programming, data structures, and web development."
+},
 ];
 
 export default function Timeline() {

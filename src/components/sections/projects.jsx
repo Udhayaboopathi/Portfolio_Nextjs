@@ -26,7 +26,7 @@ const projects = [
     aiHint: "prompt exam application",
     tags: ["Python", "FastAPI", "MongoDB"],
     github: "https://github.com/Udhayaboopathi/PROMPT_EXAM_APP",
-    live: "#",
+    live: "/",
   },
   {
     title: "AI Prompt Quality Analyzer",
@@ -60,21 +60,21 @@ const projects = [
   "aiHint": "python summarization qa backend",
   "tags": ["Python", "NLP", "Summarization", "FastAPI", "MongoDB", "Other"],
   "github": "https://github.com/Udhayaboopathi/SMART-SUMMARIZATION-Q-A-ASSISTANT-FOR-STUDENTS",
-  "live": "#"
+  "live": "/"
 },
 {
   "title": "Organic Food Recommendations",
   "description": "A mini project (PG Sathya) combining Python-based recommendation logic with a web interface (HTML/CSS/JS) to suggest organic or healthier food alternatives based on user input or dataset attributes.",
   "aiHint": "organic food recommendation system",
-  "tags": ["Python", "Recommendation-System", "Web", "Nutrition", "Organic"],
+  "tags": ["FastAPI","HTML","CSS","JavaScript"],
   "github": "https://github.com/Udhayaboopathi/Organic-Food-Recommendations",
-  "live": "#"
+  "live": "/"
 },
   {
   "title": "First Portfolio",
   "description": "Personal portfolio site (initial version) showcasing projects and profile. Built primarily with static HTML (likely with CSS/JS assets) and configured for GitHub Pages deployment.",
   "aiHint": "personal portfolio static site",
-  "tags": ["Portfolio", "HTML", "Web"],
+  "tags": ["HTML","CSS","JavaScript"],
   "github": "https://github.com/Udhayaboopathi/First-Portfolio",
   "live": "https://udhayaboopathi.github.io/First-Portfolio/"
 },
@@ -84,19 +84,16 @@ const projects = [
   "aiHint": "python discord bot commands events",
   "tags": ["Python", "Discord-Bot", "Automation"],
   "github": "https://github.com/Udhayaboopathi/Discord-bot-python",
-  "visibility": "private"
+   "live": "/"
 },
-  {
-    title: "SMART-SUMMARIZATION-Q-A-ASSISTANT-FOR-STUDENTS-REACT",
-    description:
-      "A full-featured e-commerce site with product listings, cart, checkout, and user authentication.",
-    // image removed
-    aiHint: "ecommerce website",
-    tags: ["JavaScript", "Other"],
-    github:
-      "https://github.com/Udhayaboopathi/SMART-SUMMARIZATION-Q-A-ASSISTANT-FOR-STUDENTS-REACT",
-    live: "#",
-  },
+ {
+  "title": "MST_BOT",
+  "description": "JavaScript-based bot project (likely for messaging or automation). Repository is small (≈54 KB) and public; intended for experimenting with bot commands or task automation.",
+  "aiHint": "javascript bot automation",
+  "tags": ["JavaScript", "Bot", "Automation"],
+  "github": "https://github.com/Udhayaboopathi/MST_BOT",
+  "live": "/"
+},
 ];
 
 const INITIAL_PROJECT_COUNT = 3;

@@ -1,29 +1,30 @@
 
 "use client";
 
-import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
 import { Card, CardContent } from '@/components/ui/card';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import thenmozhi from "@/assets/thenmozhi.png";
+import maestros from "@/assets/maestros.png";
+
 
 const testimonials = [
   {
-    name: 'Jane Smith',
-    role: 'Project Manager, Tech Solutions Inc.',
-    quote: "Udhayaboopathi is a phenomenal developer. Their attention to detail and ability to tackle complex problems is second to none. A true asset to any team.",
-    avatar: 'https://placehold.co/100x100.png',
-    initials: 'JS'
+    name: 'Thenmozhi',
+    role: 'CEO of Rishi e Service Center',
+    quote: "Working with Udhayaboopathi was a breeze...",
+  avatar: thenmozhi.src,  // use direct string path
+    initials: 'V'
   },
   {
-    name: 'Mark Johnson',
-    role: 'Lead Designer, Creative Co.',
-    quote: "Working with Udhayaboopathi was a breeze. They have a great eye for design and were able to translate our mockups into a pixel-perfect, responsive reality.",
-    avatar: 'https://placehold.co/100x100.png',
-    initials: 'MJ'
+    name: 'MAESTROS COMMUNITY',
+    role: 'Owner of MAESTROS COMMUNITY',
+    quote: "Udhayaboopathi built a powerful Discord bot automation...",
+  avatar: maestros.src,   // use direct string path
+    initials: 'MC'
   }
 ];
-
 export default function Testimonials() {
   if (testimonials.length === 0) return null;
 

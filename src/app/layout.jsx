@@ -4,6 +4,8 @@ import { Toaster } from "@/components/ui/toaster";
 
 import PageTransition from '@/components/PageTransition';
 import { ScrollProgressProvider } from '@/components/ScrollProgressProvider';
+import logo from "@/app/logo.svg";
+import profile from "@/assets/image.png";
 
 export const metadata = {
   title: 'Udhayaboopathi </> Portfolio',
@@ -11,6 +13,16 @@ export const metadata = {
     'Udhayaboopathi - Modern portfolio showcasing projects, skills, and experience as a full stack developer. Built with Next.js and Firebase.',
   keywords: [
     'Udhayaboopathi',
+    "udhay",
+    "udhayaboopathi",
+    "Udhaya boopathi",
+    "udhaya boopathi",
+    'Udhayaboopath V',
+    "udhay",
+    "udhayaboopathi v",
+    "Udhaya boopathi v",
+    "udhaya boopathi v",
+
     'Portfolio',
     'Full Stack Developer',
     'React',
@@ -23,7 +35,7 @@ export const metadata = {
   creator: 'Udhayaboopathi',
   manifest: '/manifest.json',
   icons: {
-    icon: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNTYiIGhlaWdodD0iMjU2IiB2aWV3Qm94PSIwIDAgMjQgMjQiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2ZiZDIyZCIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLWNvZGUteG1sLWljb24gbHVjaWRlLWNvZGUteG1sIj48cGF0aCBkPSJtMTggMTYgNC00LTQtNCIvPjxwYXRoIGQ9Im02IDgtNCA0IDQgNCIvPjxwYXRoIGQ9Im0xNC41IDQtNSAxNiIvPjwvc3ZnPg==',
+    icon: logo.src, // set site favicon / primary icon
     shortcut: '/logo.png',
     apple: '/apple-touch-icon.png',
   },
@@ -35,7 +47,7 @@ export const metadata = {
     siteName: 'Udhayaboopathi Portfolio',
     images: [
       {
-        url: 'https://github.com/Udhayaboopathi/Portfolio_Nextjs/blob/master/src/assets/image.png?raw=true',
+        url: profile.src,
         width: 1200,
         height: 630,
       },

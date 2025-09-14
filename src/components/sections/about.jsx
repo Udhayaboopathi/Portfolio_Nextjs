@@ -7,7 +7,9 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Card, CardHeader, CardTitle, CardContent, CardDescription } from '@/components/ui/card';
 import { motion } from 'framer-motion';
 
-const aboutContent = `I am a web developer with a passion for creating beautiful and functional websites. I have a strong understanding of web technologies and a desire to learn new things.`;
+const aboutContent = `I’m a developer who loves building digital experiences that feel powerful, engaging, and meaningful. To me, development goes beyond writing code. it’s about solving real problems, shaping ideas into reality, and always pushing the limits of what’s possible.
+
+Every project I take on is a chance to mix creativity with precision, with the goal of delivering results that are not only functional but also memorable. My approach is simple: think boldly, work smart, and keep evolving.`;
 
 const experience = [
   {
