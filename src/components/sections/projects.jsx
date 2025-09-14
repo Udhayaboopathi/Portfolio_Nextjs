@@ -11,60 +11,7 @@ import Link from 'next/link';
 import { useState, useMemo } from 'react';
 
 const projects = [
-  {
-    title: 'Project 01',
-    description: 'A full-featured e-commerce site with product listings, cart, checkout, and user authentication.',
-    image: 'https://placehold.co/600x400.png',
-    aiHint: 'ecommerce website',
-    tags: ['Next.js', 'TypeScript', 'Stripe', 'PostgreSQL'],
-    github: 'https://github.com',
-    live: '#',
-  },
-  {
-    title: 'Project 02',
-    description: 'A collaborative task management tool with drag-and-drop boards, real-time updates, and notifications.',
-    image: 'https://placehold.co/600x400.png',
-    aiHint: 'task management',
-    tags: ['React', 'Firebase', 'Tailwind CSS', 'Framer Motion',"udhay"],
-    github: 'https://github.com',
-    live: '#',
-  },
-  {
-    title: 'Project 03',
-    description: 'The very portfolio you are looking at, built with modern web technologies and a focus on UX.',
-    image: 'https://placehold.co/600x400.png',
-    aiHint: 'portfolio design',
-    tags: ['Next.js', 'GenAI', 'ShadCN UI', 'Framer Motion'],
-    github: 'https://github.com',
-    live: '#',
-  },
-   {
-    title: 'Project 04',
-    description: 'An interactive dashboard for visualizing complex datasets with various chart types and filters.',
-    image: 'https://placehold.co/600x400.png',
-    aiHint: 'data dashboard',
-    tags: ['D3.js', 'React', 'Express', 'MongoDB'],
-    github: 'https://github.com',
-    live: '#',
-  },
-   {
-    title: 'Project 05',
-    description: 'A conversational AI chatbot that provides helpful information and companionship, built with modern NLP models.',
-    image: 'https://placehold.co/600x400.png',
-    aiHint: 'ai chatbot',
-    tags: ['Python', 'Genkit', 'Flask', 'WebSocket'],
-    github: 'https://github.com',
-    live: '#',
-  },
-   {
-    title: 'Project 06',
-    description: 'A cross-platform mobile app to track workouts, set goals, and view progress over time.',
-    image: 'https://placehold.co/600x400.png',
-    aiHint: 'fitness app',
-    tags: ['React Native', 'Expo', 'GraphQL', 'SQLite'],
-    github: 'https://github.com',
-    live: '#',
-  },
+    
 ];
 
 const INITIAL_PROJECT_COUNT = 3;
