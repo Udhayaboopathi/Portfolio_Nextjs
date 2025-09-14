@@ -30,7 +30,7 @@ const timelineEvents = [
 
 export default function Timeline() {
     return (
-    <section id="timeline" className="container mx-auto px-4 sm:px-6 lg:px-8 scroll-mt-15">
+    <section id="timeline" className="container mx-auto px-4 sm:px-6 lg:px-8 scroll-mt-[65px]">
             <motion.div
                 initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}

@@ -22,8 +22,11 @@ import {
     SiOpenai,
     SiFlask,
     SiJavascript ,
-    SiFastapi
+    SiFastapi,
+    SiGooglecloud ,
+    SiGithub 
 } from 'react-icons/si';
+import { LiaAws } from "react-icons/lia";
 
 const iconClass = "w-10 h-10 text-primary";
 const skillsData = {
@@ -47,7 +50,12 @@ const skillsData = {
     'Tools & More': [
         { name: 'Git', icon: <SiGit className={iconClass} /> },
         { name: 'OpenAI', icon: <SiOpenai className={iconClass} /> },
-    ]
+        {name:"gitHub", icon:<SiGithub  className={iconClass}/>},
+    ],
+    'Cloud': [
+        { name: 'AWS', icon: <LiaAws  className={iconClass} /> },
+        { name: 'Google Cloud', icon: <SiGooglecloud className={iconClass} /> },
+    ],
 };
 
 const allSkills = Object.values(skillsData).flat();
@@ -65,7 +73,7 @@ export default function Skills({ content }) {
     };
 
     return (
-    <section id="skills" className="container mx-auto px-4 sm:px-6 lg:px-8 scroll-mt-[78px]">
+    <section id="skills" className="container mx-auto px-4 sm:px-6 lg:px-8 scroll-mt-[65px]">
             <motion.div
                 initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}

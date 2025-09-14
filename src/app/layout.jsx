@@ -1,4 +1,3 @@
-
 import './globals.css';
 import { ThemeProvider } from '@/components/theme-provider';
 import { Toaster } from "@/components/ui/toaster";
@@ -8,8 +7,18 @@ import { ScrollProgressProvider } from '@/components/ScrollProgressProvider';
 
 export const metadata = {
   title: 'Udhayaboopathi </> Portfolio',
-  description: 'Udhayaboopathi - Modern portfolio showcasing projects, skills, and experience as a full stack developer. Built with Next.js and Firebase.',
-  keywords: ['Udhayaboopathi', 'Portfolio', 'Full Stack Developer', 'React', 'Next.js', 'Firebase', 'Web Developer', 'UI/UX'],
+  description:
+    'Udhayaboopathi - Modern portfolio showcasing projects, skills, and experience as a full stack developer. Built with Next.js and Firebase.',
+  keywords: [
+    'Udhayaboopathi',
+    'Portfolio',
+    'Full Stack Developer',
+    'React',
+    'Next.js',
+    'Firebase',
+    'Web Developer',
+    'UI/UX',
+  ],
   authors: [{ name: 'Udhayaboopathi', url: 'https://udhayaboopathi.me' }],
   creator: 'Udhayaboopathi',
   manifest: '/manifest.json',
@@ -20,7 +29,8 @@ export const metadata = {
   },
   openGraph: {
     title: 'Udhayaboopathi - Full Stack Developer Portfolio',
-    description: 'Check out my modern portfolio showcasing projects, skills, and experience as a full stack developer.',
+    description:
+      'Check out my modern portfolio showcasing projects, skills, and experience as a full stack developer.',
     url: 'https://udhayaboopathi.me',
     siteName: 'Udhayaboopathi Portfolio',
     images: [
@@ -36,8 +46,11 @@ export const metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'Udhayaboopathi - Full Stack Developer Portfolio',
-    description: 'Check out my modern portfolio showcasing projects, skills, and experience as a full stack developer.',
-    images: ['https://github.com/Udhayaboopathi/Portfolio_Nextjs/blob/master/src/assets/image.png?raw=true'],
+    description:
+      'Check out my modern portfolio showcasing projects, skills, and experience as a full stack developer.',
+    images: [
+      'https://github.com/Udhayaboopathi/Portfolio_Nextjs/blob/master/src/assets/image.png?raw=true',
+    ],
     creator: '@udhayaboopathi',
   },
   robots: {
@@ -45,25 +58,29 @@ export const metadata = {
     follow: true,
     nocache: false,
   },
-  // Custom social links
   socials: {
     github: 'https://github.com/Udhayaboopathi',
     instagram: 'https://www.instagram.com/udhayaboopathi_/',
-    discord: 'https://discordapp.com/users/581142001739628565', 
+    discord: 'https://discordapp.com/users/581142001739628565',
   },
 };
-
-
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+        <link
+          rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossOrigin="anonymous"
+        />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
+          rel="stylesheet"
+        />
       </head>
-      <body className="font-body antialiased">
+      <body className="font-body antialiased" suppressHydrationWarning>
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"
@@ -71,9 +88,7 @@ export default function RootLayout({ children }) {
           disableTransitionOnChange
         >
           <ScrollProgressProvider />
-          <PageTransition>
-            {children}
-          </PageTransition>
+          <PageTransition>{children}</PageTransition>
           <Toaster />
         </ThemeProvider>
       </body>

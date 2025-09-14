@@ -26,7 +26,7 @@ export default function Toolbox() {
   };
 
   return (
-    <section id="toolbox" className="container mx-auto px-4 sm:px-6 lg:px-8 scroll-mt-15">
+    <section id="toolbox" className="container mx-auto px-4 sm:px-6 lg:px-8 scroll-mt-[65px]">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
             <motion.div
                 initial={{ opacity: 0, y: 50 }}

@@ -97,7 +97,7 @@ export default function Navbar() {
     }
 
     const headerEl = document.querySelector('header');
-    const offset = headerEl ? headerEl.offsetHeight - 2 : 78; // align with scroll-mt-[78px]
+    const offset = headerEl ? headerEl.offsetHeight - 2 : 78; // align with scroll-mt-[65px]
     const startY = window.scrollY;
     const targetY = section.getBoundingClientRect().top + window.scrollY - offset;
     const distance = targetY - startY;
