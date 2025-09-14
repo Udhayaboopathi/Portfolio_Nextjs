@@ -70,6 +70,14 @@ const projects = [
   "github": "https://github.com/Udhayaboopathi/Organic-Food-Recommendations",
   "live": "/"
 },
+{
+  "title": "Rishi E-Services Center",
+  "description": "Static service-center website built mainly with HTML and CSS (very little JavaScript). Deployed via GitHub Pages to present local e-service offerings and contact/info sections.",
+  "aiHint": "static html css service center website",
+  "tags": ["HTML", "CSS", "Static-Site", "Services"],
+  "github": "https://github.com/Udhayaboopathi/Rishi-E-Services-Center",
+  "live": "https://rishi-e-service.netlify.app/"
+},
   {
   "title": "First Portfolio",
   "description": "Personal portfolio site (initial version) showcasing projects and profile. Built primarily with static HTML (likely with CSS/JS assets) and configured for GitHub Pages deployment.",

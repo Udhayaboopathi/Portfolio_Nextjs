@@ -8,21 +8,20 @@ import logo from "@/app/logo.svg";
 import profile from "@/assets/image.png";
 
 export const metadata = {
+  metadataBase: new URL('https://udhayaboopathi.me'), // <-- add this
   title: 'Udhayaboopathi </> Portfolio',
   description:
     'Udhayaboopathi - Modern portfolio showcasing projects, skills, and experience as a full stack developer. Built with Next.js and Firebase.',
   keywords: [
     'Udhayaboopathi',
-    "udhay",
-    "udhayaboopathi",
-    "Udhaya boopathi",
-    "udhaya boopathi",
+    'udhay',
+    'udhayaboopathi',
+    'Udhaya boopathi',
+    'udhaya boopathi',
     'Udhayaboopath V',
-    "udhay",
-    "udhayaboopathi v",
-    "Udhaya boopathi v",
-    "udhaya boopathi v",
-
+    'udhayaboopathi v',
+    'Udhaya boopathi v',
+    'udhaya boopathi v',
     'Portfolio',
     'Full Stack Developer',
     'React',
@@ -35,7 +34,7 @@ export const metadata = {
   creator: 'Udhayaboopathi',
   manifest: '/manifest.json',
   icons: {
-    icon: logo.src, // set site favicon / primary icon
+    icon: logo.src,
     shortcut: '/logo.png',
     apple: '/apple-touch-icon.png',
   },
@@ -60,9 +59,7 @@ export const metadata = {
     title: 'Udhayaboopathi - Full Stack Developer Portfolio',
     description:
       'Check out my modern portfolio showcasing projects, skills, and experience as a full stack developer.',
-    images: [
-      'https://github.com/Udhayaboopathi/Portfolio_Nextjs/blob/master/src/assets/image.png?raw=true',
-    ],
+    images: [profile.src],
     creator: '@udhayaboopathi',
   },
   robots: {
@@ -76,6 +73,7 @@ export const metadata = {
     discord: 'https://discordapp.com/users/581142001739628565',
   },
 };
+
 
 export default function RootLayout({ children }) {
   return (
