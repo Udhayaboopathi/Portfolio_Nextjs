@@ -51,9 +51,9 @@ export const metadata = {
   },
 
   openGraph: {
-    title: "Udhayaboopathi - Full Stack Developer Portfolio",
+    title: "Udhayaboopathi - Developer Portfolio",
     description:
-      "Check out my modern portfolio showcasing projects, skills, and experience as a full stack developer.",
+      "Check out my modern portfolio showcasing projects, skills, and experience as a developer.",
     url: "https://udhayaboopathi.me",
     siteName: "Udhayaboopathi Portfolio",
     images: [
