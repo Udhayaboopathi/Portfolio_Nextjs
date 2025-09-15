@@ -8,7 +8,7 @@ import logo from "@/app/logo.svg";
 import profile from "@/assets/image.png";
 
 export const metadata = {
-  metadataBase: new URL('https://udhayaboopathi.me'), // <-- add this
+  metadataBase: new URL('https://udhayaboopathi.me'), 
   title: 'Udhayaboopathi </> Portfolio',
   description:
     'Udhayaboopathi - Modern portfolio showcasing projects, skills, and experience as a full stack developer. Built with Next.js and Firebase.',
@@ -46,7 +46,7 @@ export const metadata = {
     siteName: 'Udhayaboopathi Portfolio',
     images: [
       {
-        url: profile.src,
+        url: "https://github.com/Udhayaboopathi/Portfolio_Nextjs/blob/master/src/assets/image.png?raw=true",
         width: 1200,
         height: 630,
       },
@@ -59,7 +59,7 @@ export const metadata = {
     title: 'Udhayaboopathi - Full Stack Developer Portfolio',
     description:
       'Check out my modern portfolio showcasing projects, skills, and experience as a full stack developer.',
-    images: [profile.src],
+    images: "https://github.com/Udhayaboopathi/Portfolio_Nextjs/blob/master/src/assets/image.png?raw=true",
     creator: '@udhayaboopathi',
   },
   robots: {

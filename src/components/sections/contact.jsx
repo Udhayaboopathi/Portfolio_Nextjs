@@ -1,40 +1,55 @@
 "use client";
 
-import { useForm } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
-import * as z from 'zod';
-import { motion, useAnimation, useInView } from 'framer-motion';
-import { useToast } from '@/hooks/use-toast';
-import { suggestFollowUp } from '@/ai/flows/suggest-follow-up';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Textarea } from '@/components/ui/textarea';
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
-import { Switch } from '@/components/ui/switch';
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import * as z from "zod";
+import { motion, useAnimation, useInView } from "framer-motion";
+import { useToast } from "@/hooks/use-toast";
+import { suggestFollowUp } from "@/ai/flows/suggest-follow-up";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
 import {
-  AlertDialog, AlertDialogContent, AlertDialogHeader, AlertDialogTitle,
-  AlertDialogDescription, AlertDialogFooter, AlertDialogAction
-} from '@/components/ui/alert-dialog';
-import { useState, useEffect, useRef } from 'react';
-import { Loader2, Wand2 } from 'lucide-react';
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form";
+import { Switch } from "@/components/ui/switch";
+import {
+  AlertDialog,
+  AlertDialogContent,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogAction,
+} from "@/components/ui/alert-dialog";
+import { useState, useEffect, useRef } from "react";
+import { Loader2, Wand2 } from "lucide-react";
 import { SiGithub, SiLinkedin, SiInstagram } from "react-icons/si";
 import { FaFacebookSquare } from "react-icons/fa";
 import { LiaWhatsapp } from "react-icons/lia";
-import Link from 'next/link';
+import Link from "next/link";
 
 const formSchema = z.object({
-  name: z.string().min(2, 'Name must be at least 2 characters.'),
-  email: z.string().email('Invalid email address.'),
-  message: z.string().min(10, 'Message must be at least 10 characters.'),
+  name: z.string().min(2, "Name must be at least 2 characters."),
+  email: z.string().email("Invalid email address."),
+  message: z.string().min(10, "Message must be at least 10 characters."),
   getSuggestion: z.boolean().default(false).optional(),
 });
 
-export default function Contact({ aboutSection, projectsSection, skillsSection }) {
+export default function Contact({
+  aboutSection,
+  projectsSection,
+  skillsSection,
+}) {
   const { toast } = useToast();
   const [isLoading, setIsLoading] = useState(false);
-  const [suggestion, setSuggestion] = useState('');
+  const [suggestion, setSuggestion] = useState("");
   const [isDialogOpen, setIsDialogOpen] = useState(false);
-  const [currentYear, setCurrentYear] = useState('');
 
   const controls = useAnimation();
   const ref = useRef(null);
@@ -42,17 +57,23 @@ export default function Contact({ aboutSection, projectsSection, skillsSection }
 
   const iconVariants = {
     hidden: { y: 20, opacity: 0 },
-    visible: { y: 0, opacity: 1, transition: { type: "spring", stiffness: 300, damping: 20 } }
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: { type: "spring", stiffness: 300, damping: 20 },
+    },
   };
 
-  const iconClass = "text-2xl text-foreground hover:text-primary transition-colors duration-300";
+  const iconClass =
+    "text-2xl text-foreground hover:text-primary transition-colors duration-300";
 
-  useEffect(() => setCurrentYear(new Date().getFullYear().toString()), []);
-  useEffect(() => { if (isInView) controls.start("visible"); }, [isInView, controls]);
+  useEffect(() => {
+    if (isInView) controls.start("visible");
+  }, [isInView, controls]);
 
   const form = useForm({
     resolver: zodResolver(formSchema),
-    defaultValues: { name: '', email: '', message: '', getSuggestion: false },
+    defaultValues: { name: "", email: "", message: "", getSuggestion: false },
   });
 
   async function onSubmit(data) {
@@ -67,19 +88,24 @@ export default function Contact({ aboutSection, projectsSection, skillsSection }
           projectsSection,
           skillsSection,
         });
-        setSuggestion(aiResponse?.followUpSuggestion || '');
+        setSuggestion(aiResponse?.followUpSuggestion || "");
         setIsDialogOpen(true);
       }
-      toast({ title: "Message Sent!", description: "Thanks for reaching out. I'll get back to you soon." });
+      toast({
+        title: "Message Sent!",
+        description: "Thanks for reaching out. I'll get back to you soon.",
+      });
       form.reset();
     } catch (error) {
       console.error(error);
       toast({
         title: "Uh oh! Something went wrong.",
         description: "There was a problem with your request. Please try again.",
-        variant: 'destructive'
+        variant: "destructive",
       });
-    } finally { setIsLoading(false); }
+    } finally {
+      setIsLoading(false);
+    }
   }
 
   return (
@@ -95,13 +121,15 @@ export default function Contact({ aboutSection, projectsSection, skillsSection }
         transition={{ duration: 0.5 }}
         className="max-w-2xl mx-auto pb-14 lg:pb-16 text-center"
       >
-        <h2 className="text-3xl font-bold mb-2 font-headline md:text-4xl">Get In Touch</h2>
+        <h2 className="text-3xl font-bold mb-2 font-headline md:text-4xl">
+          Get In Touch
+        </h2>
         <p className="text-muted-foreground mb-12">
-          I'm currently available for freelance work. Reach out via the form, email, phone, or social links below.
+          I'm currently available for freelance work. Reach out via the form,
+          email, phone, or social links below.
         </p>
       </motion.div>
 
-      {/* Equal width, equal height layout */}
       <div className="grid gap-12 lg:grid-cols-2 items-stretch">
         {/* Left Column (Form) */}
         <motion.div
@@ -111,13 +139,21 @@ export default function Contact({ aboutSection, projectsSection, skillsSection }
           transition={{ duration: 0.5 }}
         >
           <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6 h-full">
+            <form
+              onSubmit={(e) => {
+                e.preventDefault(); // prevent default browser mail action
+                form.handleSubmit(onSubmit)(e);
+              }}
+              className="space-y-6 h-full"
+            >
               <FormField
                 control={form.control}
                 name="name"
                 render={({ field }) => (
                   <FormItem>
-                    <FormControl><Input placeholder="Your Name" {...field} /></FormControl>
+                    <FormControl>
+                      <Input placeholder="Your Name" {...field} />
+                    </FormControl>
                     <FormMessage />
                   </FormItem>
                 )}
@@ -127,34 +163,38 @@ export default function Contact({ aboutSection, projectsSection, skillsSection }
                 name="email"
                 render={({ field }) => (
                   <FormItem>
-                    <FormControl><Input type="email" placeholder="Your Email" {...field} /></FormControl>
+                    <FormControl>
+                      <Input type="email" placeholder="Your Email" {...field} />
+                    </FormControl>
                     <FormMessage />
                   </FormItem>
                 )}
               />
-             <FormField
-  control={form.control}
-  name="message"
-  render={({ field }) => (
-    <FormItem>
-      <FormControl>
-        <Textarea
-          placeholder="Your Message"
-          className="min-h-[270px] resize-y"
-          {...field}
-        />
-      </FormControl>
-      <FormMessage />
-    </FormItem>
-  )}
-/>
+              <FormField
+                control={form.control}
+                name="message"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormControl>
+                      <Textarea
+                        placeholder="Your Message"
+                        className="min-h-[270px] resize-y"
+                        {...field}
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
               <FormField
                 control={form.control}
                 name="getSuggestion"
                 render={({ field }) => (
                   <FormItem className="flex flex-row items-center justify-between rounded-lg border p-4 bg-background">
                     <div className="space-y-0.5">
-                      <FormLabel className="text-base">AI Follow-up Suggestion</FormLabel>
+                      <FormLabel className="text-base">
+                        AI Follow-up Suggestion
+                      </FormLabel>
                       <p className="text-sm text-muted-foreground">
                         Get an AI-powered suggestion for your follow-up email.
                       </p>
@@ -170,7 +210,11 @@ export default function Contact({ aboutSection, projectsSection, skillsSection }
                 )}
               />
               <Button type="submit" disabled={isLoading} className="w-full">
-                {isLoading ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : 'Send Message'}
+                {isLoading ? (
+                  <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                ) : (
+                  "Send Message"
+                )}
               </Button>
             </form>
           </Form>
@@ -183,8 +227,6 @@ export default function Contact({ aboutSection, projectsSection, skillsSection }
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.5 }}
         >
-          {/* Map takes proportional height */}
-            {/* If you want map shorter, change flex-1 to e.g. flex-[0.6] and below flex to flex-[1.4] etc */}
           <div className="flex-1 min-h-[260px] rounded-lg overflow-hidden border">
             <iframe
               className="w-full h-full"
@@ -195,12 +237,13 @@ export default function Contact({ aboutSection, projectsSection, skillsSection }
             />
           </div>
 
-          {/* Contact Info fills remaining space */}
           <div className="flex-1 bg-background rounded-lg p-6 border flex flex-col justify-between">
             <div className="space-y-4">
               <div>
                 <h3 className="font-semibold text-lg">Address</h3>
-                <p className="text-muted-foreground">Salem, Tamil Nadu, India, Pin: 637504</p>
+                <p className="text-muted-foreground">
+                  Salem, Tamil Nadu, India, Pin: 637504
+                </p>
               </div>
               <div>
                 <h3 className="font-semibold text-lg">Call Us</h3>
@@ -208,23 +251,45 @@ export default function Contact({ aboutSection, projectsSection, skillsSection }
               </div>
               <div>
                 <h3 className="font-semibold text-lg">Email Us</h3>
-                <p className="text-muted-foreground">udhayaboopathi2003@gmail.com</p>
+                <p className="text-muted-foreground">
+                  udhayaboopathi2003@gmail.com
+                </p>
               </div>
             </div>
             <div className="flex gap-4 mt-6">
-              <Link href="https://www.facebook.com/Udhayaboopathi2003" target="_blank" rel="noopener noreferrer">
+              <Link
+                href="https://www.facebook.com/Udhayaboopathi2003"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <FaFacebookSquare className={iconClass} />
               </Link>
-              <Link href="https://www.instagram.com/udhayaboopathi_/" target="_blank" rel="noopener noreferrer">
+              <Link
+                href="https://www.instagram.com/udhayaboopathi_/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <SiInstagram className={iconClass} />
               </Link>
-              <Link href="https://wa.me/916369255254" target="_blank" rel="noopener noreferrer">
+              <Link
+                href="https://wa.me/916369255254"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <LiaWhatsapp className={iconClass} />
               </Link>
-              <Link href="https://www.linkedin.com/in/udhayaboopathi" target="_blank" rel="noopener noreferrer">
+              <Link
+                href="https://www.linkedin.com/in/udhayaboopathi"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <SiLinkedin className={iconClass} />
               </Link>
-              <Link href="https://github.com/Udhayaboopathi" target="_blank" rel="noopener noreferrer">
+              <Link
+                href="https://github.com/Udhayaboopathi"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <SiGithub className={iconClass} />
               </Link>
             </div>
@@ -239,14 +304,17 @@ export default function Contact({ aboutSection, projectsSection, skillsSection }
               <Wand2 className="text-primary" /> AI Follow-up Suggestion
             </AlertDialogTitle>
             <AlertDialogDescription>
-              Here's a personalized suggestion for your follow-up email based on my profile and your message:
+              Here's a personalized suggestion for your follow-up email based on
+              my profile and your message:
             </AlertDialogDescription>
           </AlertDialogHeader>
           <div className="bg-muted p-4 rounded-md border">
             <p className="text-sm whitespace-pre-line">{suggestion}</p>
           </div>
           <AlertDialogFooter>
-            <AlertDialogAction onClick={() => setIsDialogOpen(false)}>Got it, thanks!</AlertDialogAction>
+            <AlertDialogAction onClick={() => setIsDialogOpen(false)}>
+              Got it, thanks!
+            </AlertDialogAction>
           </AlertDialogFooter>
         </AlertDialogContent>
       </AlertDialog>
