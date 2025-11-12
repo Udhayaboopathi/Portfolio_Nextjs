@@ -73,7 +73,7 @@ export default function Skills({ content }) {
     };
 
     return (
-    <section id="skills" className="container mx-auto px-4 sm:px-6 lg:px-8 scroll-mt-[65px]">
+    <section id="skills" className="container mx-auto py-12 px-4 sm:px-6 lg:px-8 scroll-mt-[65px]">
             <motion.div
                 initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}

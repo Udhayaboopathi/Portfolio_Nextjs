@@ -151,7 +151,7 @@ export default function Projects({ content }) {
   return (
     <section
       id="projects"
-      className="container mx-auto px-4 sm:px-6 lg:px-8 scroll-mt-[65px]"
+      className="container mx-auto py-12 px-4 sm:px-6 lg:px-8 scroll-mt-[65px]"
     >
       <motion.div
         initial={{ opacity: 0, y: 50 }}

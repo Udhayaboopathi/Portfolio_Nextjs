@@ -6,7 +6,7 @@ import { loadSlim } from "tsparticles-slim";
 import { TypeAnimation } from "react-type-animation";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { ArrowDown } from "lucide-react";
+import { ArrowDown, ArrowRight } from "lucide-react";
 import { useTheme } from "next-themes";
 
 export default function Hero() {
@@ -29,6 +29,17 @@ export default function Hero() {
   const particlesInit = useCallback(async (engine) => {
     await loadSlim(engine);
   }, []);
+
+  // Smooth scroll function
+  const scrollToSection = (sectionId) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ 
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }
+  };
 
   const { scrollY } = useScroll();
   // Parallax transforms
@@ -105,7 +116,7 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="relative flex h-screen w-full items-center justify-center overflow-hidden p-4 text-center scroll-mt-32"
+      className="relative flex h-screen w-full items-center justify-center overflow-hidden px-6 py-20 text-center scroll-mt-32"
     >
       {/* Background Particles */}
       <motion.div className="absolute inset-0 -z-10" style={{ scale: scaleBg }}>
@@ -116,13 +127,13 @@ export default function Hero() {
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1 }}
-        className="z-10 flex flex-col items-center gap-6 will-change-transform"
+        transition={{ duration: 0.8, ease: "easeOut" }}
+        className="z-10 flex max-w-5xl flex-col items-center gap-6 sm:gap-8 will-change-transform"
         style={{ opacity: fadeOut }}
       >
         {/* Name */}
         <motion.h1
-          className="text-4xl font-bold tracking-tight sm:text-5xl md:text-7xl font-headline"
+          className="text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl lg:text-7xl font-headline"
           style={{ y: titleY }}
         >
           I Am Udhayaboopathi
@@ -130,15 +141,14 @@ export default function Hero() {
 
         {/* Subtitle */}
         <motion.p
-          className="text-base text-muted-foreground sm:text-lg md:text-xl"
-
+          className="max-w-3xl text-base text-muted-foreground sm:text-lg md:text-xl"
           style={{ y: subtitleY }}
         >
           Full Stack Developer | Problem Solver | Automation & Backend Integration | Interactive Web Experiences Creator
         </motion.p>
 
         {/* Typing Animation */}
-        <div className="h-6 text-base font-medium text-primary sm:text-lg md:text-xl">
+        <div className="h-8 text-base font-medium text-primary sm:text-lg md:text-xl">
           {isMounted && (
             <TypeAnimation
               sequence={[
@@ -166,15 +176,42 @@ export default function Hero() {
           )}
         </div>
 
-        {/* Call To Action */}
+        {/* Call To Action Buttons */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.5 }}
+          transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
+          className="mt-4 flex flex-col items-center gap-4 sm:flex-row sm:gap-6"
         >
-          <Button size="lg" className="mt-8" asChild>
-            <a href="#projects">View My Work</a>
-          </Button>
+          {/* Primary CTA - Let's Collaborate */}
+          <motion.div
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            <Button 
+              size="lg" 
+              className="group px-8 py-6 text-base font-semibold sm:text-lg"
+              onClick={() => scrollToSection('contact')}
+            >
+              Let&apos;s Collaborate
+              <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
+            </Button>
+          </motion.div>
+
+          {/* Secondary CTA - View Projects */}
+          <motion.div
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            <Button 
+              size="lg" 
+              variant="outline"
+              className="px-8 py-6 text-base font-semibold sm:text-lg"
+              onClick={() => scrollToSection('projects')}
+            >
+              View Projects
+            </Button>
+          </motion.div>
         </motion.div>
       </motion.div>
 
@@ -182,12 +219,16 @@ export default function Hero() {
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ duration: 1, delay: 1.5 }}
+        transition={{ duration: 1, delay: 1 }}
         className="absolute bottom-10 left-1/2 -translate-x-1/2"
       >
-        <a href="#about" aria-label="Scroll down">
+        <button 
+          onClick={() => scrollToSection('about')}
+          aria-label="Scroll down"
+          className="cursor-pointer"
+        >
           <ArrowDown className="h-8 w-8 text-foreground/50 animate-bounce" />
-        </a>
+        </button>
       </motion.div>
     </section>
   );

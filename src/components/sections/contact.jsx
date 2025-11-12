@@ -10,6 +10,13 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import {
   Form,
   FormControl,
   FormField,
@@ -28,7 +35,7 @@ import {
   AlertDialogAction,
 } from "@/components/ui/alert-dialog";
 import { useState, useEffect, useRef } from "react";
-import { Loader2, Wand2 } from "lucide-react";
+import { Loader2, Wand2, Check } from "lucide-react";
 import { SiGithub, SiLinkedin, SiInstagram } from "react-icons/si";
 import { FaFacebookSquare } from "react-icons/fa";
 import { LiaWhatsapp } from "react-icons/lia";
@@ -37,6 +44,7 @@ import Link from "next/link";
 const formSchema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters."),
   email: z.string().email("Invalid email address."),
+  projectType: z.string().min(1, "Please select a project type."),
   message: z.string().min(10, "Message must be at least 10 characters."),
   getSuggestion: z.boolean().default(false).optional(),
 });
@@ -48,6 +56,7 @@ export default function Contact({
 }) {
   const { toast } = useToast();
   const [isLoading, setIsLoading] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
   const [suggestion, setSuggestion] = useState("");
   const [isDialogOpen, setIsDialogOpen] = useState(false);
 
@@ -73,33 +82,77 @@ export default function Contact({
 
   const form = useForm({
     resolver: zodResolver(formSchema),
-    defaultValues: { name: "", email: "", message: "", getSuggestion: false },
+    defaultValues: { 
+      name: "", 
+      email: "", 
+      projectType: "",
+      message: "", 
+      getSuggestion: false 
+    },
   });
 
   async function onSubmit(data) {
     setIsLoading(true);
+    setIsSuccess(false);
+    
     try {
+      // Generate AI suggestion if enabled
       if (data.getSuggestion) {
-        const aiResponse = await suggestFollowUp({
-          name: data.name,
-          email: data.email,
-          message: data.message,
-          aboutSection,
-          projectsSection,
-          skillsSection,
-        });
-        setSuggestion(aiResponse?.followUpSuggestion || "");
-        setIsDialogOpen(true);
+        try {
+          const aiResponse = await suggestFollowUp({
+            name: data.name,
+            email: data.email,
+            message: data.message,
+            aboutSection: aboutSection || "Full Stack Developer",
+            projectsSection: projectsSection || "Various web development projects",
+            skillsSection: skillsSection || "React, Next.js, Node.js, and more",
+          });
+          
+          const suggestionText = aiResponse?.followUpSuggestion || aiResponse?.output?.followUpSuggestion;
+          
+          if (suggestionText) {
+            setSuggestion(suggestionText);
+          } else {
+            setSuggestion("Thank you for your message! I'll review your inquiry and respond within 24-48 hours with relevant information about how we can work together.");
+          }
+          setIsDialogOpen(true);
+        } catch (aiError) {
+          console.error("AI suggestion error:", aiError);
+          // Provide a meaningful fallback suggestion
+          setSuggestion(
+            `Thank you for reaching out, ${data.name}! Based on your message, I'd be happy to discuss how my skills in web development and automation can help with your project. I'll get back to you shortly to explore this further.`
+          );
+          setIsDialogOpen(true);
+        }
       }
+
+      // Create email content with project type
+      const subject = encodeURIComponent(`${data.projectType} - ${data.name}`);
+      const body = encodeURIComponent(
+        `Name: ${data.name}\nEmail: ${data.email}\nProject Type: ${data.projectType}\n\nMessage:\n${data.message}\n\nRegards,\n${data.name}`
+      );
+      
+      // Redirect to default mail client
+      window.location.href = `mailto:udhayaboopathi2003@gmail.com?subject=${subject}&body=${body}`;
+      
+      // Show success state
+      setIsSuccess(true);
+      
       toast({
-        title: "Message Sent!",
-        description: "Thanks for reaching out. I'll get back to you soon.",
+        title: "✅ Message Sent Successfully!",
+        description: "Your email client will open with the message details.",
       });
-      form.reset();
+      
+      // Reset form after showing success animation
+      setTimeout(() => {
+        form.reset();
+        setIsSuccess(false);
+      }, 2000);
+      
     } catch (error) {
-      console.error(error);
+      console.error("Form submission error:", error);
       toast({
-        title: "Uh oh! Something went wrong.",
+        title: "❌ Something went wrong",
         description: "There was a problem with your request. Please try again.",
         variant: "destructive",
       });
@@ -111,7 +164,7 @@ export default function Contact({
   return (
     <section
       id="contact"
-      className="container mx-auto px-4 sm:px-6 lg:px-8 scroll-mt-[65px]"
+      className="container mx-auto py-12 px-4 sm:px-6 lg:px-8 scroll-mt-[86px]"
       ref={ref}
     >
       <motion.div
@@ -121,8 +174,8 @@ export default function Contact({
         transition={{ duration: 0.5 }}
         className="max-w-2xl mx-auto pb-14 lg:pb-16 text-center"
       >
-        <h2 className="text-3xl font-bold mb-2 font-headline md:text-4xl">
-          Get In Touch
+        <h2 className="text-3xl font-bold mb-2 font-headline md:text-4xl lg:text-5xl">
+          Let&apos;s Build Something Awesome Together
         </h2>
         <p className="text-muted-foreground mb-12">
           I'm currently available for freelance work. Reach out via the form,
@@ -134,9 +187,10 @@ export default function Contact({
         {/* Left Column (Form) */}
         <motion.div
           className="flex flex-col"
-          initial={{ opacity: 0, x: -50 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.5 }}
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
         >
           <Form {...form}>
             <form
@@ -151,34 +205,76 @@ export default function Contact({
                 name="name"
                 render={({ field }) => (
                   <FormItem>
+                    <FormLabel>Name</FormLabel>
                     <FormControl>
-                      <Input placeholder="Your Name" {...field} />
+                      <Input 
+                        placeholder="Your Name" 
+                        className="border-2 focus:border-primary transition-colors"
+                        {...field} 
+                      />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
                 )}
               />
+              
               <FormField
                 control={form.control}
                 name="email"
                 render={({ field }) => (
                   <FormItem>
+                    <FormLabel>Email</FormLabel>
                     <FormControl>
-                      <Input type="email" placeholder="Your Email" {...field} />
+                      <Input 
+                        type="email" 
+                        placeholder="your.email@example.com" 
+                        className="border-2 focus:border-primary transition-colors"
+                        {...field} 
+                      />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
                 )}
               />
+
+              <FormField
+                control={form.control}
+                name="projectType"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Project Type</FormLabel>
+                    <Select onValueChange={field.onChange} defaultValue={field.value}>
+                      <FormControl>
+                        <SelectTrigger className="border-2 focus:border-primary transition-colors">
+                          <SelectValue placeholder="Select a project type" />
+                        </SelectTrigger>
+                      </FormControl>
+                      <SelectContent>
+                        <SelectItem value="Web Development">Web Development</SelectItem>
+                        <SelectItem value="Mobile App">Mobile App</SelectItem>
+                        <SelectItem value="E-commerce">E-commerce</SelectItem>
+                        <SelectItem value="Automation">Automation</SelectItem>
+                        <SelectItem value="API Integration">API Integration</SelectItem>
+                        <SelectItem value="Full Stack Project">Full Stack Project</SelectItem>
+                        <SelectItem value="Consultation">Consultation</SelectItem>
+                        <SelectItem value="Other">Other</SelectItem>
+                      </SelectContent>
+                    </Select>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              
               <FormField
                 control={form.control}
                 name="message"
                 render={({ field }) => (
                   <FormItem>
+                    <FormLabel>Message</FormLabel>
                     <FormControl>
                       <Textarea
-                        placeholder="Your Message"
-                        className="min-h-[270px] resize-y"
+                        placeholder="Tell me about your project..."
+                        className="min-h-[150px] resize-y border-2 focus:border-primary transition-colors"
                         {...field}
                       />
                     </FormControl>
@@ -190,9 +286,9 @@ export default function Contact({
                 control={form.control}
                 name="getSuggestion"
                 render={({ field }) => (
-                  <FormItem className="flex flex-row items-center justify-between rounded-lg border p-4 bg-background">
+                  <FormItem className="flex flex-row items-center justify-between rounded-lg border-2 border-primary/20 p-4 bg-primary/5">
                     <div className="space-y-0.5">
-                      <FormLabel className="text-base">
+                      <FormLabel className="text-base font-semibold">
                         AI Follow-up Suggestion
                       </FormLabel>
                       <p className="text-sm text-muted-foreground">
@@ -209,11 +305,37 @@ export default function Contact({
                   </FormItem>
                 )}
               />
-              <Button type="submit" disabled={isLoading} className="w-full">
+              
+              <Button 
+                type="submit" 
+                disabled={isLoading || isSuccess} 
+                className="w-full h-12 text-base font-semibold relative overflow-hidden group"
+              >
                 {isLoading ? (
-                  <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                  <>
+                    <Loader2 className="mr-2 h-5 w-5 animate-spin" />
+                    Sending...
+                  </>
+                ) : isSuccess ? (
+                  <motion.div
+                    initial={{ scale: 0 }}
+                    animate={{ scale: 1 }}
+                    transition={{ type: "spring", stiffness: 200 }}
+                    className="flex items-center"
+                  >
+                    <Check className="mr-2 h-5 w-5" />
+                    Message Sent!
+                  </motion.div>
                 ) : (
-                  "Send Message"
+                  <>
+                    Send Message
+                    <motion.div
+                      className="absolute inset-0 bg-primary/20"
+                      initial={{ x: '-100%' }}
+                      whileHover={{ x: '100%' }}
+                      transition={{ duration: 0.5 }}
+                    />
+                  </>
                 )}
               </Button>
             </form>
@@ -223,9 +345,10 @@ export default function Contact({
         {/* Right Column (Map + Info) */}
         <motion.div
           className="flex flex-col gap-6 h-full"
-          initial={{ opacity: 0, x: 50 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.5 }}
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, ease: "easeOut", delay: 0.2 }}
         >
           <div className="flex-1 min-h-[260px] rounded-lg overflow-hidden border">
             <iframe

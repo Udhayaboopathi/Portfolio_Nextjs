@@ -14,6 +14,14 @@ const nextConfig = {
       },
     ],
   },
+  experimental: {
+    serverActions: {
+      allowedOrigins: [
+        'localhost:9002',
+        '*.app.github.dev',
+      ],
+    },
+  },
 };
 
 module.exports = nextConfig;
