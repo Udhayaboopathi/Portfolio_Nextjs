@@ -6,7 +6,7 @@ import { loadSlim } from "tsparticles-slim";
 import { TypeAnimation } from "react-type-animation";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { ArrowDown, ArrowRight } from "lucide-react";
+import { ArrowDown, ArrowRight, Download } from "lucide-react";
 import { useTheme } from "next-themes";
 
 export default function Hero() {
@@ -34,7 +34,7 @@ export default function Hero() {
   const scrollToSection = (sectionId) => {
     const element = document.getElementById(sectionId);
     if (element) {
-      element.scrollIntoView({ 
+      element.scrollIntoView({
         behavior: 'smooth',
         block: 'start'
       });
@@ -183,35 +183,87 @@ export default function Hero() {
           transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
           className="mt-4 flex flex-col items-center gap-4 sm:flex-row sm:gap-6"
         >
-          {/* Primary CTA - Let's Collaborate */}
+
+          {/* Secondary CTA - Download Resume */}
           <motion.div
-            whileHover={{ scale: 1.05 }}
+            animate={{ scale: [1, 1.07, 1] }}
+            transition={{ duration: 2.2, repeat: Infinity, ease: "easeInOut" }}
+            whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.95 }}
           >
-            <Button 
-              size="lg" 
-              className="group px-8 py-6 text-base font-semibold sm:text-lg"
-              onClick={() => scrollToSection('contact')}
+            <Button
+              size="lg"
+              variant="ghost"
+              className="group px-8 py-6 text-base font-semibold hover:bg-foreground/5 transition-all duration-300 sm:text-lg"
+              asChild
             >
-              Let&apos;s Collaborate
-              <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
+              <a href="/Udhayaboopathi_V_Resume.pdf" download="Udhayaboopathi_Resume.pdf">
+                <Download className="mr-2 h-5 w-5 transition-all group-hover:animate-bounce" />
+                Download Resume
+              </a>
             </Button>
           </motion.div>
 
-          {/* Secondary CTA - View Projects */}
+
+          {/* Tertiary CTA - View Projects */}
           <motion.div
-            whileHover={{ scale: 1.05 }}
+            animate={{ scale: [1, 1.07, 1] }}
+            transition={{ duration: 2.2, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+            whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.95 }}
           >
-            <Button 
-              size="lg" 
-              variant="outline"
-              className="px-8 py-6 text-base font-semibold sm:text-lg"
+            <Button
+              size="lg"
+              variant="ghost"
+              className="group px-8 py-6 text-base font-semibold hover:bg-foreground/5 transition-all duration-300 sm:text-lg"
               onClick={() => scrollToSection('projects')}
             >
               View Projects
+              <motion.span
+                className="ml-2 inline-block"
+                animate={{ x: [0, 5, 0] }}
+                transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+              >
+                →
+              </motion.span>
             </Button>
           </motion.div>
+
+        </motion.div>
+
+
+        {/* Primary CTA - Let's Collaborate (Eye-catching with gradient & animation) */}
+        <motion.div
+          whileHover={{ scale: 1.08 }}
+          whileTap={{ scale: 0.95 }}
+          animate={{
+            boxShadow: [
+              "0 0 20px rgba(250, 204, 21, 0.3)",
+              "0 0 40px rgba(250, 204, 21, 0.5)",
+              "0 0 20px rgba(250, 204, 21, 0.3)"
+            ]
+          }}
+          transition={{
+            boxShadow: { duration: 2, repeat: Infinity, ease: "easeInOut" }
+          }}
+          className="rounded-lg"
+        >
+          <Button
+            size="lg"
+            className="group relative overflow-hidden bg-gradient-to-r from-primary via-yellow-500 to-primary bg-[length:200%_100%] px-8 py-6 text-base font-bold text-black shadow-lg hover:bg-[position:100%_0] transition-all duration-500 sm:text-lg"
+            onClick={() => scrollToSection('contact')}
+          >
+            <span className="relative z-10 flex items-center">
+              Let&apos;s Collaborate
+              <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-2" />
+            </span>
+            <motion.div
+              className="absolute inset-0 bg-white/20"
+              initial={{ x: "-100%" }}
+              whileHover={{ x: "100%" }}
+              transition={{ duration: 0.6 }}
+            />
+          </Button>
         </motion.div>
       </motion.div>
 
@@ -222,7 +274,7 @@ export default function Hero() {
         transition={{ duration: 1, delay: 1 }}
         className="absolute bottom-10 left-1/2 -translate-x-1/2"
       >
-        <button 
+        <button
           onClick={() => scrollToSection('about')}
           aria-label="Scroll down"
           className="cursor-pointer"
