@@ -36,7 +36,7 @@ import {
 } from "@/components/ui/alert-dialog";
 import { useState, useEffect, useRef } from "react";
 import { Loader2, Wand2, Check } from "lucide-react";
-import { SiGithub, SiLinkedin, SiInstagram } from "react-icons/si";
+import { SiGithub, SiLinkedin, SiInstagram, SiDiscord } from "react-icons/si";
 import { FaFacebookSquare } from "react-icons/fa";
 import { LiaWhatsapp } from "react-icons/lia";
 import Link from "next/link";
@@ -400,6 +400,13 @@ export default function Contact({
                 rel="noopener noreferrer"
               >
                 <LiaWhatsapp className={iconClass} />
+              </Link>
+              <Link
+                href="https://discord.com/users/i_am_groot"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <SiDiscord className={iconClass} />
               </Link>
               <Link
                 href="https://www.linkedin.com/in/udhayaboopathi"
