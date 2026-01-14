@@ -97,7 +97,14 @@ export const metadata = {
     "theme-color": "#000000",
     "mobile-web-app-capable": "yes",
     "apple-mobile-web-app-title": "Udhayaboopathi Portfolio",
+    "og:locale": "en_US",
+    "og:site_name": "Udhayaboopathi Portfolio",
   },
+
+  // ✅ Additional metadata for better SEO
+  category: "portfolio",
+  classification: "Business",
+  referrer: "origin-when-cross-origin",
 };
 
 // ✅ Root Layout Component
@@ -147,15 +154,63 @@ export default function RootLayout({ children }) {
               "@type": "Person",
               name: "Udhayaboopathi",
               url: "https://udhayaboopathi.tech",
+              image:
+                "https://github.com/Udhayaboopathi/Portfolio_Nextjs/blob/master/src/assets/image.png?raw=true",
               sameAs: [
                 "https://github.com/Udhayaboopathi",
                 "https://www.instagram.com/udhayaboopathi_/",
                 "https://discordapp.com/users/581142001739628565",
               ],
               jobTitle: "Full Stack Developer",
+              description:
+                "Full Stack Developer specializing in React, Next.js, and Firebase",
               worksFor: {
                 "@type": "Organization",
                 name: "Freelance",
+              },
+              knowsAbout: [
+                "Web Development",
+                "React",
+                "Next.js",
+                "Firebase",
+                "JavaScript",
+                "TypeScript",
+                "Node.js",
+                "Full Stack Development",
+              ],
+            }),
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "WebSite",
+              name: "Udhayaboopathi Portfolio",
+              url: "https://udhayaboopathi.tech",
+              description:
+                "Modern portfolio showcasing projects, skills, and experience as a full stack developer",
+              author: {
+                "@type": "Person",
+                name: "Udhayaboopathi",
+              },
+              inLanguage: "en-US",
+            }),
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "ProfilePage",
+              mainEntity: {
+                "@type": "Person",
+                name: "Udhayaboopathi",
+                alternateName: ["Udhaya Boopathi", "Udhayaboopathi V"],
+                description: "Full Stack Developer",
+                url: "https://udhayaboopathi.tech",
               },
             }),
           }}
