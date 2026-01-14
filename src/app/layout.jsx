@@ -50,7 +50,7 @@ export const metadata = {
       { url: "/favicon.ico", sizes: "any" },
     ],
     shortcut: "/logo.svg",
-    apple: "/apple-touch-icon.png",
+    apple: "/image_1.png",
   },
 
   openGraph: {
@@ -134,7 +134,7 @@ export default function RootLayout({ children }) {
         {/* ✅ Favicons for SEO */}
         <link rel="icon" href="/logo.svg" type="image/svg+xml" />
         <link rel="icon" href="/favicon.ico" sizes="any" />
-        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+        <link rel="apple-touch-icon" href="/image_1.png" />
       </head>
       <body className="font-body antialiased" suppressHydrationWarning>
         <ThemeProvider
