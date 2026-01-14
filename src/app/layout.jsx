@@ -45,8 +45,11 @@ export const metadata = {
     canonical: "https://udhayaboopathi.tech",
   },
   icons: {
-    icon: logo.src,
-    shortcut: "/logo.png",
+    icon: [
+      { url: "/logo.svg", type: "image/svg+xml" },
+      { url: "/favicon.ico", sizes: "any" },
+    ],
+    shortcut: "/logo.svg",
     apple: "/apple-touch-icon.png",
   },
 
@@ -129,8 +132,8 @@ export default function RootLayout({ children }) {
         <link rel="alternate" type="application/rss+xml" href="/rss.xml" />
 
         {/* ✅ Favicons for SEO */}
+        <link rel="icon" href="/logo.svg" type="image/svg+xml" />
         <link rel="icon" href="/favicon.ico" sizes="any" />
-        <link rel="icon" href="/icon.svg" type="image/svg+xml" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
       </head>
       <body className="font-body antialiased" suppressHydrationWarning>
