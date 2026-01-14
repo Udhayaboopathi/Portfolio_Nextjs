@@ -23,12 +23,14 @@ A modern, interactive portfolio website built with Next.js, featuring stunning a
 ## 🛠️ Tech Stack
 
 ### Core
+
 - **[Next.js 15.5.3](https://nextjs.org/)** - React framework with App Router
 - **[React 18](https://reactjs.org/)** - UI library
 - **[TypeScript](https://www.typescriptlang.org/)** - Type safety (optional)
 - **[Tailwind CSS](https://tailwindcss.com/)** - Utility-first CSS framework
 
 ### UI & Animations
+
 - **[Framer Motion](https://www.framer.com/motion/)** - Animation library
 - **[Radix UI](https://www.radix-ui.com/)** - Headless UI components
 - **[Lucide Icons](https://lucide.dev/)** - Beautiful icon library
@@ -36,6 +38,7 @@ A modern, interactive portfolio website built with Next.js, featuring stunning a
 - **[React TSParticles](https://particles.js.org/)** - Particle effects
 
 ### Additional Libraries
+
 - **[next-themes](https://github.com/pacocoursey/next-themes)** - Theme management
 - **[class-variance-authority](https://cva.style/)** - Component variants
 - **[clsx](https://github.com/lukeed/clsx)** - Conditional classnames
@@ -88,12 +91,14 @@ Portfolio_Nextjs/
 ### Installation
 
 1. **Clone the repository**
+
    ```bash
    git clone https://github.com/Udhayaboopathi/Portfolio_Nextjs.git
    cd Portfolio_Nextjs
    ```
 
 2. **Install dependencies**
+
    ```bash
    npm install
    # or
@@ -103,6 +108,7 @@ Portfolio_Nextjs/
    ```
 
 3. **Run the development server**
+
    ```bash
    npm run dev
    # or
@@ -112,7 +118,7 @@ Portfolio_Nextjs/
    ```
 
 4. **Open your browser**
-   
+
    Navigate to [http://localhost:3000](http://localhost:3000)
 
 ### Build for Production
@@ -127,6 +133,7 @@ npm start
 ### Update Personal Information
 
 Edit the content in these files:
+
 - `src/components/sections/about.jsx` - About, experience, education, certifications
 - `src/components/sections/skills.jsx` - Skills and technologies
 - `src/components/sections/projects.jsx` - Portfolio projects
@@ -142,10 +149,7 @@ Replace `/public/resume.pdf` with your own resume file.
 Add your images to `/public/` and update the paths in `src/components/sections/about.jsx`:
 
 ```javascript
-const profileImages = [
-  "/your-image-1.png",
-  "/your-image-2.png",
-];
+const profileImages = ["/your-image-1.png", "/your-image-2.png"];
 ```
 
 ### Customize Theme Colors
@@ -175,6 +179,7 @@ theme: {
 ## 📱 Responsive Design
 
 The portfolio is fully responsive and optimized for:
+
 - 📱 Mobile devices (320px+)
 - 📱 Tablets (768px+)
 - 💻 Desktops (1024px+)
@@ -201,6 +206,7 @@ The portfolio is fully responsive and optimized for:
 ## 🤝 Contributing
 
 Contributions are welcome! Feel free to:
+
 1. Fork the repository
 2. Create a feature branch (`git checkout -b feature/AmazingFeature`)
 3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
@@ -215,7 +221,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 **Udhayaboopathi V**
 
-- Portfolio: [udhayaboopathi.me](https://udhayaboopathi.me)
+- Portfolio: [udhayaboopathi.tech](https://udhayaboopathi.tech)
 - GitHub: [@Udhayaboopathi](https://github.com/Udhayaboopathi)
 - LinkedIn: [Udhayaboopathi](https://www.linkedin.com/in/udhayaboopathi)
 

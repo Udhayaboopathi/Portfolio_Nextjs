@@ -8,7 +8,7 @@ import logo from "@/app/logo.svg";
 
 // ✅ Metadata configuration for SEO
 export const metadata = {
-  metadataBase: new URL("https://udhayaboopathi.me"),
+  metadataBase: new URL("https://udhayaboopathi.tech"),
   title: {
     default: "Udhayaboopathi </> Portfolio",
     template: "%s | Udhayaboopathi </> Portfolio",
@@ -37,12 +37,12 @@ export const metadata = {
     "MERN Developer",
     "Software Engineer",
   ],
-  authors: [{ name: "Udhayaboopathi", url: "https://udhayaboopathi.me" }],
+  authors: [{ name: "Udhayaboopathi", url: "https://udhayaboopathi.tech" }],
   creator: "Udhayaboopathi",
   publisher: "Udhayaboopathi",
   manifest: "/manifest.json",
   alternates: {
-    canonical: "https://udhayaboopathi.me",
+    canonical: "https://udhayaboopathi.tech",
   },
   icons: {
     icon: logo.src,
@@ -54,7 +54,7 @@ export const metadata = {
     title: "Udhayaboopathi - Developer Portfolio",
     description:
       "Check out my modern portfolio showcasing projects, skills, and experience as a developer.",
-    url: "https://udhayaboopathi.me",
+    url: "https://udhayaboopathi.tech",
     siteName: "Udhayaboopathi Portfolio",
     images: [
       {
@@ -146,7 +146,7 @@ export default function RootLayout({ children }) {
               "@context": "https://schema.org",
               "@type": "Person",
               name: "Udhayaboopathi",
-              url: "https://udhayaboopathi.me",
+              url: "https://udhayaboopathi.tech",
               sameAs: [
                 "https://github.com/Udhayaboopathi",
                 "https://www.instagram.com/udhayaboopathi_/",
